@@ -185,6 +185,14 @@ body {
   font-size: 14px;
   margin: 0 4px 8px;
   font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.tag-omni:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 /* Progress bar improvements */
