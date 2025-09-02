@@ -7,83 +7,78 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/theme.css" />
-  <link rel="stylesheet" href="/freeaicharity_custom.css" />
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/responsive-fix.css" />
+  <link rel="stylesheet" href="./freeaicharity_custom.css" />
   <!-- DONATION_LINKS_START -->
   <script>window.DONATION_LINKS = {"venmoUrl":"https://venmo.com/u/FreeAICharity","cashAppUrl":"https://cash.app/$janady07","stripePaymentLink":"https://buy.stripe.com/test_123","cashAppHandle":"@janady07","campaignRaised":1200,"campaignGoal":5000000,"venmoHandle":"thatdeveloperguyyyy"};</script>
 <!-- DONATION_LINKS_END -->
   <style>
-    :root {
-      --accent: #7c5cff;
-      --accent-2: #00d4ff;
-      --bg-1: #0b1020;
-      --bg-2: #0e1a3a;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --glass: rgba(255,255,255,0.06);
-      --glass-border: rgba(255,255,255,0.12);
-      --shadow: 0 10px 30px rgba(0,0,0,0.45);
-    }
-    body {
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      margin: 0;
-      color: var(--text);
-      background: radial-gradient(1200px 500px at 10% 10%, rgba(124,92,255,0.12), transparent 60%),
-                  radial-gradient(1000px 500px at 90% 0%, rgba(0,212,255,0.12), transparent 60%),
-                  linear-gradient(180deg, var(--bg-1), var(--bg-2));
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .wrap { width: 100%; padding: 32px; }
-    .hero {
-      max-width: 960px; margin: 0 auto; text-align: center;
-    }
+    /* Additional styles that may be needed but aren't in the CSS file */
     .brand {
-      display: inline-flex; align-items: center; gap: 14px; margin-bottom: 12px;
+      display: inline-flex; 
+      align-items: center; 
+      gap: 14px; 
+      margin-bottom: 12px;
       background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-      font-weight: 800; font-size: clamp(28px, 6vw, 54px);
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      color: transparent;
+      font-weight: 800; 
+      font-size: clamp(28px, 6vw, 54px);
       letter-spacing: 0.4px;
       text-shadow: 0 8px 30px rgba(124,92,255,0.25);
     }
-    .tagline { color: var(--muted); font-size: clamp(14px, 2.2vw, 18px); margin-bottom: 28px; }
-    .card {
-      margin: 0 auto; max-width: 860px;
-      background: var(--glass);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px; padding: 28px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+    
+    .btn:hover { 
+      transform: translateY(-2px); 
+      background: rgba(255,255,255,0.07); 
+      border-color: rgba(255,255,255,0.2); 
     }
-    .cta {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 8px;
+    
+    .btn svg { 
+      width: 22px; 
+      height: 22px; 
     }
-    .btn {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      border: 1px solid var(--glass-border);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      padding: 16px 18px; border-radius: 12px; text-decoration: none; font-weight: 600;
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    
+    .sub { 
+      color: var(--muted); 
+      font-size: 13px; 
+      margin-top: 12px; 
     }
-    .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); }
-    .btn svg { width: 22px; height: 22px; }
-    .sub { color: var(--muted); font-size: 13px; margin-top: 12px; }
-    .admin-link { margin-top: 22px; display: inline-block; color: #b3c7ff; opacity: .85; text-decoration: none; }
-    .admin-link:hover { opacity: 1; text-decoration: underline; }
+    
+    .admin-link { 
+      margin-top: 22px; 
+      display: inline-block; 
+      color: #b3c7ff; 
+      opacity: .85; 
+      text-decoration: none; 
+    }
+    
+    .admin-link:hover { 
+      opacity: 1; 
+      text-decoration: underline; 
+    }
+    
     /* Hide disabled donation buttons entirely */
-    .btn-omni.disabled { display: none; }
-    .stripe-options { display:grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:10px; }
-    .stripe-options a { text-decoration:none; display:flex; align-items:center; justify-content:center; }
-    .stripe-options a:hover { text-decoration:none; }
-    .section-header { margin-top:16px; margin-bottom:4px; font-weight:800; letter-spacing:.2px; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .btn-omni.disabled { 
+      display: none; 
+    }
+    
+    .section-header { 
+      margin-top: 16px; 
+      margin-bottom: 4px; 
+      font-weight: 800; 
+      letter-spacing: .2px; 
+      background: linear-gradient(90deg, var(--accent), var(--accent-2)); 
+      -webkit-background-clip: text; 
+      background-clip: text; 
+      color: transparent; 
+    }
   </style>
   <link rel="stylesheet" href="css/fix-overlay.css"/>
 </head>
-<body>
+<body class="github-pages">
   <main class="wrap">
     <section class="hero hero-omni reveal-in" style="border-radius:16px; overflow:hidden;">
       <div class="brand">ThatAIGuy.org</div>
@@ -108,9 +103,15 @@
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="#635bff"/><rect x="5" y="9" width="10" height="2" rx="1" fill="#ffffff" opacity=".9"/><rect x="5" y="13" width="14" height="2" rx="1" fill="#ffffff" opacity=".9"/></svg>
             <span>Donate with Card (Stripe)</span>
           </a>
-          <div id="stripeOptions" class="stripe-options" style="display:none"></div>
-          <div id="bizHeader" class="section-header" style="display:none">Business & Sponsorship</div>
-          <div id="businessOptions" class="stripe-options" style="display:none"></div>
+        </div>
+        
+        <div class="donation-tiers">
+          <h3 class="section-header">Select Donation Amount</h3>
+          <div id="stripeOptions" class="stripe-options"></div>
+        </div>
+        
+        <div class="business-tiers">
+          <h3 id="bizHeader" class="section-header" style="display:none">Business & Sponsorship</h3>
           <div id="businessOptions" class="stripe-options" style="display:none"></div>
         </div>
         <div id="note" class="sub">Links load from <code>static/config.json</code>. Update your handles/URLs there.</div>
@@ -156,29 +157,46 @@
         cashBtn.href = `https://cash.app/${norm}`;
       }
 
-      if (stripeLinks.length > 0 && stripeOptions) {
+      // Always set the main Stripe button URL
+      if (stripeUrl) {
+        stripeBtn.href = stripeUrl;
+      } else if (stripeLinks.length > 0 && stripeLinks[0] && stripeLinks[0].url) {
+        stripeBtn.href = stripeLinks[0].url;
+      }
+      
+      // Always show the stripe options if available
+      if (stripeOptions) {
         stripeOptions.innerHTML = '';
         const fmt = (cents) => {
           const dollars = (Number(cents) || 0) / 100;
           return `$${dollars.toLocaleString(undefined,{maximumFractionDigits:0})}`;
         };
-        stripeLinks
-          .filter(it => it && it.url)
-          .sort((a,b) => (a.amountCents||0) - (b.amountCents||0))
-          .forEach(it => {
-            const a = document.createElement('a');
-            a.href = it.url;
-            a.target = '_blank'; a.rel = 'noopener';
-            a.textContent = it.name || fmt(it.amountCents || 0);
-            a.classList.add('btn');
-            stripeOptions.appendChild(a);
-          });
-        stripeOptions.style.display = 'grid';
-        if (!stripeUrl && stripeLinks[0] && stripeLinks[0].url) {
-          stripeBtn.href = stripeLinks[0].url;
+        
+        if (stripeLinks.length > 0) {
+          stripeLinks
+            .filter(it => it && it.url)
+            .sort((a,b) => (a.amountCents||0) - (b.amountCents||0))
+            .forEach(it => {
+              const a = document.createElement('a');
+              a.href = it.url;
+              a.target = '_blank'; a.rel = 'noopener';
+              a.textContent = it.name || fmt(it.amountCents || 0);
+              a.classList.add('btn');
+              stripeOptions.appendChild(a);
+            });
+          
+          // Show the donation tiers section
+          const tierSection = document.querySelector('.donation-tiers');
+          if (tierSection) {
+            tierSection.style.display = 'block';
+          }
+        } else {
+          // Hide the donation tiers section if no links
+          const tierSection = document.querySelector('.donation-tiers');
+          if (tierSection) {
+            tierSection.style.display = 'none';
+          }
         }
-      } else if (stripeUrl) {
-        stripeBtn.href = stripeUrl;
       }
 
       if (businessLinks.length > 0 && businessOptions) {
@@ -223,8 +241,17 @@
 
     async function loadConfig() {
       try {
-        const res = await fetch('/config.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('Config not available');
+        // Try both relative and absolute paths for GitHub Pages compatibility
+        let res;
+        try {
+          res = await fetch('/config.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('Not found at root path');
+        } catch (e) {
+          // Try relative path for GitHub Pages
+          res = await fetch('./config.json', { cache: 'no-store' });
+          if (!res.ok) throw new Error('Config not available');
+        }
+        
         const cfg = await res.json();
         applyLinks(cfg);
 
@@ -257,6 +284,6 @@
     // Then fetch config.json to ensure latest
     loadConfig();
   </script>
-  <script src="/freeaicharity_custom.js" defer></script>
+  <script src="./freeaicharity_custom.js" defer></script>
 </body>
 </html>
