@@ -1,0 +1,18 @@
+/* Polished shared theme for index/backend */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  background: linear-gradient(180deg, #0b1020, #0e1a3a);
+  color: #e5e7eb;
+  margin: 0; padding: 0;
+}
+.chart {
+  height: 250px;
+  background: rgba(255,255,255,0.04);
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px dashed rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  color: #cbd5e1;
+}

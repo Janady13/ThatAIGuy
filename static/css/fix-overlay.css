@@ -1,0 +1,5 @@
+/* Kill any debug/code overlay that might slip into prod */
+#debug, #debug-overlay, .debug, .dev-overlay, pre.debug, .code-dump { display:none !important; }
+pre[style*="position: fixed"], pre[style*="z-index: 999"], code[style*="position: fixed"] { display:none !important; }
+/* Target only debug-related elements; avoid hiding legitimate overlays */
+[id*="debug"], [class*="debug"] { display:none !important; }

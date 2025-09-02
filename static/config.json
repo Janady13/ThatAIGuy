@@ -1,0 +1,85 @@
+{
+  "venmoUrl": "https://venmo.com/u/FreeAICharity",
+  "cashAppUrl": "https://cash.app/$FreeAICharity",
+  "stripePaymentLink": "https://buy.stripe.com/14AbJ18to4Rjaglf61gMw1k",
+  "stripeLinks": [
+    {
+      "amountCents": 500,
+      "name": "Donate $5",
+      "url": "https://buy.stripe.com/cNi6oH3945Vn2NTf61gMw1j"
+    },
+    {
+      "amountCents": 2500,
+      "name": "Donate $25",
+      "url": "https://buy.stripe.com/14AbJ18to4Rjaglf61gMw1k"
+    },
+    {
+      "amountCents": 5000,
+      "name": "Donate $50",
+      "url": "https://buy.stripe.com/28E4gzaBwabD4W1f61gMw1l"
+    },
+    {
+      "amountCents": 10000,
+      "name": "Donate $100",
+      "url": "https://buy.stripe.com/eVq7sL4d8abD1JP3njgMw1m"
+    },
+    {
+      "amountCents": 25000,
+      "name": "Donate $250",
+      "url": "https://buy.stripe.com/bJe28rfVQabD1JPe1XgMw1n"
+    },
+    {
+      "amountCents": 100000,
+      "name": "Donate $1000",
+      "url": "https://buy.stripe.com/4gMaEXgZUfvX1JP4rngMw1o"
+    }
+  ],
+  "campaignRaised": 0,
+  "campaignGoal": 0,
+  "stripeBusinessLinks": [
+    {
+      "name": "Starter \u00b7 50k Agents",
+      "url": "https://buy.stripe.com/fZudR9eRM1F7ewB3njgMw1p"
+    },
+    {
+      "name": "Growth \u00b7 100k Agents",
+      "url": "https://buy.stripe.com/4gM5kDgZU0B3ewBbTPgMw1q"
+    },
+    {
+      "name": "Scale \u00b7 500k Agents",
+      "url": "https://buy.stripe.com/28EbJ1cJEfvXfAFe1XgMw1r"
+    },
+    {
+      "name": "Pro \u00b7 1M Agents",
+      "url": "https://buy.stripe.com/8x29ATgZUabD605cXTgMw1s"
+    },
+    {
+      "name": "Rapid Brief (2h)",
+      "url": "https://buy.stripe.com/6oU00jfVQ6Zrcot2jfgMw1t"
+    },
+    {
+      "name": "1-Day Sprint",
+      "url": "https://buy.stripe.com/28E00j7pkabD3RX2jfgMw1u"
+    },
+    {
+      "name": "Onboarding Call",
+      "url": "https://buy.stripe.com/6oUeVd2502JbgEJ9LHgMw1v"
+    },
+    {
+      "name": "Community Sponsor",
+      "url": "https://buy.stripe.com/8x28wP4d897zewB9LHgMw1w"
+    },
+    {
+      "name": "Featured Sponsor",
+      "url": "https://buy.stripe.com/cNi14nbFA3Nfdsx0b7gMw1x"
+    },
+    {
+      "name": "Corporate Grant $5k",
+      "url": "https://buy.stripe.com/aFa14n394bfH2NT7DzgMw1y"
+    },
+    {
+      "name": "Corporate Grant $10k",
+      "url": "https://buy.stripe.com/cNi28r6lg1F7dsx9LHgMw1z"
+    }
+  ]
+}

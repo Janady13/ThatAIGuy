@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard — ThatAIGuy.org</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/theme.css" />
+  <link rel="stylesheet" href="/freeaicharity_custom.css" />
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: #e5e7eb; }
+    .wrap { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .h1 { font-size: 32px; font-weight: 800; margin-bottom: 6px; background: linear-gradient(90deg,#7c5cff,#00d4ff); -webkit-background-clip:text; background-clip:text; color: transparent; }
+    .muted { color: #9ca3af; margin-bottom: 20px; }
+    .card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px; padding: 20px; margin-bottom: 18px; backdrop-filter: blur(10px); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 14px; }
+    code { background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 6px; }
+    .kv { display: grid; grid-template-columns: 160px 1fr; gap: 10px; margin-top: 10px; align-items: center; }
+    .pill { display:inline-block; font-size:12px; padding:4px 8px; border:1px solid rgba(255,255,255,0.18); border-radius:999px; color:#b3c7ff; }
+    a { color:#b3c7ff; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="h1">Admin Dashboard</div>
+    <div class="muted">Quick links and settings for the donation platform.</div>
+
+    <div class="grid">
+      <section class="card">
+        <h3 style="margin-top:0">Payment Settings</h3>
+        <div class="kv"><div>Venmo</div><div id="venmoVal" class="pill">loading…</div></div>
+        <div class="kv"><div>Cash App</div><div id="cashVal" class="pill">loading…</div></div>
+        <div class="kv"><div>Stripe (default)</div><div id="stripeVal" class="pill">loading…</div></div>
+        <div style="margin-top:12px">
+          <div style="font-weight:600; margin-bottom:6px">Stripe Amount Links</div>
+          <div id="stripeList" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:8px"></div>
+        </div>
+        <div style="margin-top:12px">
+          <div style="font-weight:600; margin-bottom:6px">Business Links</div>
+          <div id="stripeBizList" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:8px"></div>
+        </div>
+        <p style="margin-top:12px">Edit <code>static/config.json</code> and refresh this page. The launcher will auto-sync from <code>/Volumes/Omnicron/env/payments.env</code> if present.</p>
+        <pre style="white-space:pre-wrap;background:rgba(0,0,0,0.35);padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);margin:0">{
+  "venmoHandle": "YOUR_VENMO_HANDLE",
+  "cashAppHandle": "$YOUR_CASHAPP_HANDLE"
+}</pre>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0">Operations</h3>
+        <ul style="margin:0;padding-left:18px;line-height:1.8">
+          <li>Restart server: <code>bash launch_donation_platform.sh</code></li>
+          <li>Open site: <a href="/" target="_self">Home</a></li>
+          <li>Logs: see README for LaunchAgent paths</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h3 style="margin-top:0">Analytics</h3>
+        <div class="chart">Connect your analytics or embed a dashboard</div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    fetch('/config.json', { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(cfg => {
+        const venmo = cfg.venmoUrl || cfg.venmoHandle || 'not set';
+        const cash = cfg.cashAppUrl || cfg.cashAppHandle || 'not set';
+        const stripe = cfg.stripeUrl || cfg.stripePaymentLink || 'not set';
+        document.getElementById('venmoVal').textContent = venmo;
+        document.getElementById('cashVal').textContent = cash;
+        document.getElementById('stripeVal').textContent = stripe;
+
+        const list = document.getElementById('stripeList');
+        const links = Array.isArray(cfg.stripeLinks) ? cfg.stripeLinks : [];
+        if (links.length > 0) {
+          list.innerHTML = links
+            .filter(x => x && x.url)
+            .sort((a,b) => (a.amountCents||0) - (b.amountCents||0))
+            .map(x => {
+              const dollars = (Number(x.amountCents||0)/100).toLocaleString(undefined,{maximumFractionDigits:0});
+              const label = x.name || `$${dollars}`;
+              return `<a href="${x.url}" target="_blank" rel="noopener">${label}</a>`;
+            })
+            .join('\n');
+        } else {
+          list.textContent = 'none';
+        }
+
+        const bizList = document.getElementById('stripeBizList');
+        const biz = Array.isArray(cfg.stripeBusinessLinks) ? cfg.stripeBusinessLinks : [];
+        if (biz.length > 0) {
+          bizList.innerHTML = biz
+            .filter(x => x && x.url)
+            .map(x => `<a href="${x.url}" target="_blank" rel="noopener">${(x.name||'Business')}</a>`) 
+            .join('\n');
+        } else {
+          bizList.textContent = 'none';
+        }
+      })
+      .catch(() => {
+        document.getElementById('venmoVal').textContent = 'not found';
+        document.getElementById('cashVal').textContent = 'not found';
+        document.getElementById('stripeVal').textContent = 'not found';
+        document.getElementById('stripeList').textContent = 'not found';
+      });
+  </script>
+  <script src="/freeaicharity_custom.js" defer></script>
+</body>
+</html>

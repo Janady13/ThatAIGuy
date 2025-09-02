@@ -1,0 +1,271 @@
+/* Over-the-top AI for Good design customizations */
+
+/* Variables for gradients and glow effects */
+:root {
+  --primary-gradient: linear-gradient(130deg, #00aaff, #5b00ff);
+  --secondary-gradient: linear-gradient(130deg, #ff006f, #ffa300);
+  --neon-glow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 128, 255, 0.5);
+}
+
+/* Primary call‑to‑action button with neon glow and sweeping highlight */
+.btn-omni {
+  position: relative;
+  display: inline-block;
+  padding: 0.65rem 1.6rem;
+  color: #ffffff;
+  font-weight: 600;
+  background: var(--primary-gradient);
+  border-radius: 32px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: var(--neon-glow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Shiny sweep on hover */
+.btn-omni::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -75%;
+  width: 50%;
+  height: 400%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg) translateY(-50%);
+  filter: blur(10px);
+  transition: all 0.8s ease;
+}
+
+.btn-omni:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 1), 0 0 35px rgba(0, 128, 255, 0.8);
+}
+
+.btn-omni:hover::before {
+  left: 130%;
+}
+
+/* Secondary variant for buttons (orange‑pink gradient) */
+.btn-omni.secondary {
+  background: var(--secondary-gradient);
+}
+
+/* Tag / chip styling with frosted background */
+.tag-omni {
+  display: inline-block;
+  margin: 0.35rem;
+  padding: 0.4rem 1rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #a6b2ff;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.tag-omni:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Hero section background (replace the url with the provided hero image) */
+.hero-omni {
+  background: url('assets/hero-neon-swirl.png') center/cover no-repeat, #020214;
+  background-blend-mode: overlay;
+  position: relative; /* ensure ::after overlay is scoped to hero */
+}
+
+/*
+ * Custom Cursor & Floating Orbs
+ * These styles add a bespoke cursor ball and ambient floating orbs to reinforce
+ * the AI‑driven, celestial aesthetic. The cursor follows the pointer and
+ * enlarges on interactive elements. Orbs drift diagonally to give depth.
+ */
+
+/* Hide the default cursor only when JS enables custom cursor */
+.has-omni-cursor {
+  cursor: none;
+}
+
+/* The ball that follows the pointer */
+.omni-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--primary-gradient), var(--secondary-gradient));
+  box-shadow: 0 0 8px var(--primary-gradient), 0 0 12px var(--secondary-gradient);
+  mix-blend-mode: lighten;
+  transform: translate(-50%, -50%);
+  transition: background 0.25s ease, transform 0.15s ease, width 0.15s ease, height 0.15s ease;
+  z-index: 9999;
+}
+
+/* Ambient floating orbs that drift across the viewport */
+.floating-orb {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100, 100, 255, 0.4), rgba(50, 50, 180, 0.1));
+  mix-blend-mode: color-dodge;
+  opacity: 0.5;
+  animation: float 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(-100px) translateX(0) scale(0.6);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(100vh) translateX(300px) scale(1);
+    opacity: 0.2;
+  }
+}
+
+/*
+ * Additional V3 Effects
+ *
+ * These styles extend the previous customisation to incorporate glitch
+ * animations, dynamic gradient overlays, progress bars, and skeleton
+ * placeholders. They continue the neon aesthetic while adding subtle
+ * feedback cues inspired by modern micro‑interaction patterns.
+ */
+
+/* Hero gradient wave overlay */
+.hero-omni::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #6a3df5, #00e1ff, #ff3d7f, #ff9a27, #00e1ff);
+  background-size: 300% 300%;
+  opacity: 0.07;
+  animation: omni-gradient-wave 25s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes omni-gradient-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Glitch text effect for headings */
+.glitch-omni {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.glitch-omni::before,
+.glitch-omni::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* Offset colours for glitch duplicates */
+.glitch-omni::before {
+  color: #00e1ff;
+  transform: translate(1px, -1px);
+}
+.glitch-omni::after {
+  color: #ff3d7f;
+  transform: translate(-1px, 1px);
+}
+
+/* Shake animation on hover for glitch */
+.glitch-omni:hover {
+  animation: glitch-shake 0.35s steps(2, end) infinite;
+}
+
+@keyframes glitch-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-1px, 1px);
+  }
+  40% {
+    transform: translate(1px, -1px);
+  }
+  60% {
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    transform: translate(1px, 1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Progress bar container and fill */
+.progress-bar-omni {
+  position: relative;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress-bar-omni .progress {
+  height: 100%;
+  width: 0%;
+  background: var(--secondary-gradient);
+  border-radius: 4px;
+  box-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
+  transition: width 1.4s cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+/* Skeleton loader for async content */
+.skeleton-omni {
+  position: relative;
+  background: linear-gradient(90deg, #1a2344 0%, #2a365f 50%, #1a2344 100%);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  animation: skeleton-shimmer 1.6s infinite linear;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Fullscreen comet canvas behind content, non-interactive */
+.hero-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}

@@ -1,0 +1,26 @@
+[build]
+  publish = "static"
+  command = "node netlify-build.mjs"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[functions]
+  directory = "functions"
+
+# Optional: local dev via `netlify dev` (serves from static)
+[dev]
+  command = ""
+  publish = "static"
+
+[[edge_functions]]
+  function = "sanitize_html"
+  path = "/"
+
+[[edge_functions]]
+  function = "sanitize_html"
+  path = "/index.html"
+
+[[edge_functions]]
+  function = "sanitize_html"
+  path = "/backend"
