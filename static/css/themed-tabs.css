@@ -1,0 +1,280 @@
+/* Themed Tab Interfaces - Tim Burton & Nickelodeon Inspired */
+
+/* Tab Header Styles */
+.tab-header {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-header.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tab-header:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+.tab-header:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Tab Content Container Styles */
+.tab-content {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Return button */
+.return-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  backdrop-filter: blur(5px);
+}
+
+.return-button:hover {
+  transform: scale(1.05);
+}
+
+/* Loading Indicator */
+.loading-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--accent);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Tim Burton Theme - AI Tools */
+#aiToolsContent {
+  background: linear-gradient(to bottom, #1a1a2e, #16213e);
+  color: #e6e6fa;
+}
+
+.burton-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.burton-element {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.burton-card {
+  background: rgba(20, 20, 35, 0.8);
+  border: 2px solid #44355b;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  color: #e6e6fa;
+  transform-style: preserve-3d;
+  transition: all 0.4s ease;
+}
+
+.burton-card:hover {
+  transform: translateZ(20px) rotateX(5deg);
+  border-color: #8a76ab;
+}
+
+.burton-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #b39ddb;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.burton-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.burton-button {
+  background: linear-gradient(135deg, #644a8c, #44355b);
+  color: #e6e6fa;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.burton-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(135deg, #7a5aaa, #59467b);
+}
+
+/* Nickelodeon Theme - Community */
+#communityContent {
+  background: linear-gradient(to bottom, #ff8c00, #ff5722);
+  color: #ffffff;
+}
+
+.nickelodeon-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nickelodeon-element {
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease, filter 0.3s ease;
+}
+
+.nickelodeon-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 4px solid #ffcc00;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  color: #333;
+  transform-style: preserve-3d;
+  transition: all 0.4s ease;
+}
+
+.nickelodeon-card:hover {
+  transform: translateZ(30px) rotate(2deg);
+  border-color: #00bcd4;
+}
+
+.nickelodeon-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 15px;
+  color: #ff5722;
+  text-shadow: 2px 2px 0px #ffcc00;
+}
+
+.nickelodeon-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.nickelodeon-button {
+  background: linear-gradient(135deg, #4caf50, #8bc34a);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nickelodeon-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #5dc264, #a2d765);
+}
+
+/* Blobs for Nickelodeon Theme */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.7;
+  animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(20px);
+  }
+  50% {
+    transform: translateY(20px) translateX(-20px);
+  }
+  75% {
+    transform: translateY(10px) translateX(15px);
+  }
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .tab-content {
+    min-height: 400px;
+  }
+  
+  .burton-card, .nickelodeon-card {
+    padding: 15px;
+    max-width: 90%;
+  }
+  
+  .burton-title, .nickelodeon-title {
+    font-size: 20px;
+  }
+}
+
+/* Performance optimizations */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+}

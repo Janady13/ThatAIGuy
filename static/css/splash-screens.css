@@ -1,0 +1,161 @@
+/* Splash Screens for Tab Transitions */
+
+/* Common Splash Screen Styles */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.splash-screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.splash-content {
+  text-align: center;
+  transform: scale(0.8);
+  transition: transform 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.splash-screen.active .splash-content {
+  transform: scale(1);
+}
+
+.splash-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Burton (AI Tools) Splash Screen */
+.burton-splash {
+  background: radial-gradient(circle, #1a1a2e, #0f0f1a);
+}
+
+.burton-splash .splash-content {
+  color: #e6e6fa;
+}
+
+.burton-splash .splash-title {
+  text-shadow: 0 0 10px #644a8c, 0 0 20px #8a76ab;
+  animation: burtonGlow 2s infinite alternate;
+}
+
+@keyframes burtonGlow {
+  from { text-shadow: 0 0 10px #644a8c, 0 0 20px #8a76ab; }
+  to { text-shadow: 0 0 15px #8a76ab, 0 0 30px #b39ddb; }
+}
+
+.burton-splash .splash-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: burtonFloat 3s infinite ease-in-out;
+}
+
+@keyframes burtonFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Nickelodeon (Community) Splash Screen */
+.nickelodeon-splash {
+  background: radial-gradient(circle, #ff8c00, #ff5722);
+}
+
+.nickelodeon-splash .splash-content {
+  color: #ffffff;
+}
+
+.nickelodeon-splash .splash-title {
+  text-shadow: 3px 3px 0 #ffcc00;
+  animation: nickBounce 0.5s infinite alternate;
+}
+
+@keyframes nickBounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+.nickelodeon-splash .splash-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: nickSpin 2s infinite linear;
+}
+
+@keyframes nickSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Splash Animation Elements */
+.burton-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.burton-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #8a76ab;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: burtonParticleFloat 10s infinite linear;
+}
+
+@keyframes burtonParticleFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.7; }
+  90% { opacity: 0.7; }
+  100% { transform: translateY(-500px) translateX(100px); opacity: 0; }
+}
+
+.nickelodeon-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nickelodeon-shape {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+  animation: nickShapeFloat 8s infinite ease-in-out;
+}
+
+.nickelodeon-shape.circle {
+  border-radius: 50%;
+}
+
+.nickelodeon-shape.square {
+  border-radius: 5px;
+}
+
+.nickelodeon-shape.triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 45px solid #ffcc00;
+  background: transparent !important;
+}
+
+@keyframes nickShapeFloat {
+  0% { transform: translateY(100vh) translateX(0) rotate(0deg); }
+  100% { transform: translateY(-100px) translateX(100px) rotate(360deg); }
+}

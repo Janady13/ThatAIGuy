@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="./css/theme.css" />
   <link rel="stylesheet" href="./css/responsive-fix.css" />
   <link rel="stylesheet" href="./css/chrome-fixes.css" />
+  <link rel="stylesheet" href="./css/themed-tabs.css" />
+  <link rel="stylesheet" href="./css/splash-screens.css" />
   <link rel="stylesheet" href="./freeaicharity_custom.css" />
   <!-- DONATION_LINKS_START -->
   <script>window.DONATION_LINKS = {"venmoUrl":"https://venmo.com/u/FreeAICharity","cashAppUrl":"https://cash.app/$janady07","stripePaymentLink":"https://buy.stripe.com/test_123","cashAppHandle":"@janady07","campaignRaised":1200,"campaignGoal":5000000,"venmoHandle":"thatdeveloperguyyyy"};</script>
@@ -86,50 +88,77 @@
   <link rel="stylesheet" href="css/fix-overlay.css"/>
 </head>
 <body class="github-pages">
+  <!-- Splash Screens -->
+  <div id="burtonSplash" class="splash-screen burton-splash">
+    <div class="burton-particles" id="burtonParticles"></div>
+    <div class="splash-content">
+      <div class="splash-icon">🎭</div>
+      <h1 class="splash-title">AI Tools</h1>
+      <p>Entering the whimsical world of creative AI...</p>
+    </div>
+  </div>
+  
+  <div id="nickelodeonSplash" class="splash-screen nickelodeon-splash">
+    <div class="nickelodeon-shapes" id="nickelodeonShapes"></div>
+    <div class="splash-content">
+      <div class="splash-icon">🌟</div>
+      <h1 class="splash-title">Community</h1>
+      <p>Jumping into our vibrant community space...</p>
+    </div>
+  </div>
+  
   <div class="page-container">
     <main class="wrap">
     <section class="hero hero-omni reveal-in" style="border-radius:16px; overflow:hidden;">
       <div class="brand">ThatAIGuy.org</div>
       <div class="tagline">Help fuel research, tools, and community resources focused on accessible AI.</div>
       <div style="margin:10px 0 20px;">
-        <a href="./research.html" class="tag-omni">Open Research</a>
-        <span class="tag-omni">AI Tools</span>
-        <span class="tag-omni">Community</span>
+  <a href="./research.html" class="tag-omni">Open Research</a>
+  <span class="tag-omni tab-header" id="aiToolsTab" tabindex="0" role="button" aria-controls="aiToolsContent">AI Tools</span>
+  <span class="tag-omni tab-header" id="communityTab" tabindex="0" role="button" aria-controls="communityContent">Community</span>
       </div>
       <div class="card">
-        <h2 style="margin-top:0; margin-bottom:12px; font-size:20px; font-weight:700">Choose your donation method</h2>
-        <div class="cta">
-          <a id="venmoBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3z" fill="#3d95ce"/><path d="M16.5 6.5c.3 1.2-.1 3-1 5.3l-3.2 7.7H7.8L5.5 6.8l4.3-.3.7 6.2 2.3-6.2h3.7z" fill="#fff"/></svg>
-            <span>Donate via Venmo</span>
-          </a>
-          <a id="cashappBtn" class="btn-omni secondary" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="#00d632"/><path d="M10.5 8.2c0-.7.6-1.3 1.3-1.3h1.6c1.9 0 3.5 1.6 3.5 3.5 0 1.7-1.2 3.1-2.8 3.4l-3.4.7c-1.1.2-1.9 1.2-1.9 2.3 0 1.3 1 2.3 2.3 2.3h3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <span>Donate via Cash App</span>
-          </a>
-          <a id="stripeBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="#635bff"/><rect x="5" y="9" width="10" height="2" rx="1" fill="#ffffff" opacity=".9"/><rect x="5" y="13" width="14" height="2" rx="1" fill="#ffffff" opacity=".9"/></svg>
-            <span>Donate with Card (Stripe)</span>
-          </a>
-        </div>
-        
-        <div class="donation-tiers">
-          <h3 class="section-header">Select Donation Amount</h3>
-          <div id="stripeOptions" class="stripe-options"></div>
-        </div>
-        
-        <div class="business-tiers">
-          <h3 id="bizHeader" class="section-header" style="display:none">Business & Sponsorship</h3>
-          <div id="businessOptions" class="stripe-options" style="display:none"></div>
-        </div>
-        <div id="note" class="sub">Links load from <code>static/config.json</code>. Update your handles/URLs there.</div>
-        <div style="max-width:560px; margin:22px auto 0;">
-          <div class="progress-bar-omni" data-progress="35">
-            <div class="progress"></div>
+        <div id="tabContents">
+          <div id="aiToolsContent" class="tab-content" style="display:none;">
+            <!-- Tim Burton-inspired 3D UI will be injected here -->
           </div>
-          <div id="progressLabel" style="font-size:12px; opacity:.8; margin-top:8px; text-align:center;">Campaign progress</div>
+          <div id="communityContent" class="tab-content" style="display:none;">
+            <!-- Nickelodeon-inspired 3D UI will be injected here -->
+          </div>
         </div>
-        <a class="admin-link" href="/backend">Admin Dashboard</a>
+        <div id="mainContent">
+          <h2 style="margin-top:0; margin-bottom:12px; font-size:20px; font-weight:700">Choose your donation method</h2>
+          <div class="cta">
+            <a id="venmoBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3z" fill="#3d95ce"/><path d="M16.5 6.5c.3 1.2-.1 3-1 5.3l-3.2 7.7H7.8L5.5 6.8l4.3-.3.7 6.2 2.3-6.2h3.7z" fill="#fff"/></svg>
+              <span>Donate via Venmo</span>
+            </a>
+            <a id="cashappBtn" class="btn-omni secondary" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="#00d632"/><path d="M10.5 8.2c0-.7.6-1.3 1.3-1.3h1.6c1.9 0 3.5 1.6 3.5 3.5 0 1.7-1.2 3.1-2.8 3.4l-3.4.7c-1.1.2-1.9 1.2-1.9 2.3 0 1.3 1 2.3 2.3 2.3h3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <span>Donate via Cash App</span>
+            </a>
+            <a id="stripeBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="#635bff"/><rect x="5" y="9" width="10" height="2" rx="1" fill="#ffffff" opacity=".9"/><rect x="5" y="13" width="14" height="2" rx="1" fill="#ffffff" opacity=".9"/></svg>
+              <span>Donate with Card (Stripe)</span>
+            </a>
+          </div>
+          <div class="donation-tiers">
+            <h3 class="section-header">Select Donation Amount</h3>
+            <div id="stripeOptions" class="stripe-options"></div>
+          </div>
+          <div class="business-tiers">
+            <h3 id="bizHeader" class="section-header" style="display:none">Business & Sponsorship</h3>
+            <div id="businessOptions" class="stripe-options" style="display:none"></div>
+          </div>
+          <div id="note" class="sub">Links load from <code>static/config.json</code>. Update your handles/URLs there.</div>
+          <div style="max-width:560px; margin:22px auto 0;">
+            <div class="progress-bar-omni" data-progress="35">
+              <div class="progress"></div>
+            </div>
+            <div id="progressLabel" style="font-size:12px; opacity:.8; margin-top:8px; text-align:center;">Campaign progress</div>
+          </div>
+          <a class="admin-link" href="/backend">Admin Dashboard</a>
+        </div>
       </div>
     </section>
   </main>
@@ -294,5 +323,7 @@
     loadConfig();
   </script>
   <script src="./freeaicharity_custom.js" defer></script>
+  <script src="./splash-screens.js" defer></script>
+  <script src="./themed-tabs.js" defer></script>
 </body>
 </html>

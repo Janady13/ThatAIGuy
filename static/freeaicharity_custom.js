@@ -17,6 +17,55 @@
  */
 
 (() => {
+  /* Tab switching logic for AI Tools and Community tabs */
+  document.addEventListener('DOMContentLoaded', () => {
+    const aiTab = document.getElementById('aiToolsTab');
+    const commTab = document.getElementById('communityTab');
+    const aiContent = document.getElementById('aiToolsContent');
+    const commContent = document.getElementById('communityContent');
+    const mainContent = document.getElementById('mainContent');
+    
+    // Define splash screens
+    const burtonSplash = document.getElementById('burtonSplash');
+    const nickSplash = document.getElementById('nickelodeonSplash');
+    
+    function showTab(tab) {
+      // Delay the tab switch to allow splash screen to show
+      const switchDelay = 1000; // 1 second
+      
+      if (tab === 'ai') {
+        setTimeout(() => {
+          aiContent.style.display = 'block';
+          commContent.style.display = 'none';
+          mainContent.style.display = 'none';
+          aiTab.classList.add('active');
+          commTab.classList.remove('active');
+        }, switchDelay);
+      } else if (tab === 'community') {
+        setTimeout(() => {
+          aiContent.style.display = 'none';
+          commContent.style.display = 'block';
+          mainContent.style.display = 'none';
+          aiTab.classList.remove('active');
+          commTab.classList.add('active');
+        }, switchDelay);
+      } else {
+        aiContent.style.display = 'none';
+        commContent.style.display = 'none';
+        mainContent.style.display = 'block';
+        aiTab.classList.remove('active');
+        commTab.classList.remove('active');
+      }
+    }
+    
+    aiTab.addEventListener('click', () => showTab('ai'));
+    commTab.addEventListener('click', () => showTab('community'));
+    aiTab.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') showTab('ai'); });
+    commTab.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') showTab('community'); });
+    
+    // Default: show main content
+    showTab();
+  });
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const isMobile = /Android|iPhone|iPad|Mobile/i.test(navigator.userAgent);
 
