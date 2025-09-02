@@ -2,17 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ThatAIGuy.org — Support the Mission</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./css/theme.css" />
   <link rel="stylesheet" href="./css/responsive-fix.css" />
+  <link rel="stylesheet" href="./css/chrome-fixes.css" />
   <link rel="stylesheet" href="./freeaicharity_custom.css" />
   <!-- DONATION_LINKS_START -->
   <script>window.DONATION_LINKS = {"venmoUrl":"https://venmo.com/u/FreeAICharity","cashAppUrl":"https://cash.app/$janady07","stripePaymentLink":"https://buy.stripe.com/test_123","cashAppHandle":"@janady07","campaignRaised":1200,"campaignGoal":5000000,"venmoHandle":"thatdeveloperguyyyy"};</script>
 <!-- DONATION_LINKS_END -->
+  <script>
+    // Check if we're in an iframe (like GitHub Pages)
+    if (window !== window.top) {
+      document.documentElement.classList.add('in-iframe');
+    }
+  </script>
   <style>
     /* Additional styles that may be needed but aren't in the CSS file */
     .brand {
@@ -79,7 +86,8 @@
   <link rel="stylesheet" href="css/fix-overlay.css"/>
 </head>
 <body class="github-pages">
-  <main class="wrap">
+  <div class="page-container">
+    <main class="wrap">
     <section class="hero hero-omni reveal-in" style="border-radius:16px; overflow:hidden;">
       <div class="brand">ThatAIGuy.org</div>
       <div class="tagline">Help fuel research, tools, and community resources focused on accessible AI.</div>
@@ -125,6 +133,7 @@
       </div>
     </section>
   </main>
+  </div>
 
   <script>
     function applyLinks(cfg) {

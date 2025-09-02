@@ -1,0 +1,124 @@
+/* Chrome-specific fixes for GitHub Pages */
+
+/* Reset and normalize for Chrome */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure content fits within Chrome window */
+html {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* Fix body to be contained within browser window */
+body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ensure page container fills available space */
+.page-container {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ensure main wrap stays contained */
+main.wrap {
+  width: 100%;
+  max-width: 960px;
+  padding: 10px;
+}
+
+/* Ensure card fits within container */
+.card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix button overflow */
+.cta, .stripe-options {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Specific GitHub Pages embedded viewing fix */
+@media screen and (max-width: 980px) {
+  .hero {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+  }
+  
+  .card {
+    padding: 15px;
+  }
+  
+  .stripe-options {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+  
+  .brand {
+    font-size: 28px !important;
+  }
+  
+  .tagline {
+    font-size: 14px !important;
+    margin-bottom: 15px;
+  }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 400px) {
+  .stripe-options {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .btn, .btn-omni {
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+
+/* Specific styling for when viewed inside an iframe (GitHub Pages) */
+.in-iframe body,
+.in-iframe .page-container {
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.in-iframe .wrap {
+  padding: 10px 5px;
+}
+
+.in-iframe .card {
+  max-width: calc(100% - 10px);
+  margin: 0 auto;
+}
+
+.in-iframe .stripe-options {
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+}
+
+.in-iframe .brand {
+  font-size: 24px !important;
+}
+
+.in-iframe .tagline {
+  font-size: 13px !important;
+  margin-bottom: 10px;
+}
