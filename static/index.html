@@ -1,329 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- phase 2025-09-03T09:46:03Z -->
+<html lang="en" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>ThatAIGuy.org — Support the Mission</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./css/theme.css" />
-  <link rel="stylesheet" href="./css/responsive-fix.css" />
-  <link rel="stylesheet" href="./css/chrome-fixes.css" />
-  <link rel="stylesheet" href="./css/themed-tabs.css" />
-  <link rel="stylesheet" href="./css/splash-screens.css" />
-  <link rel="stylesheet" href="./freeaicharity_custom.css" />
-  <!-- DONATION_LINKS_START -->
-  <script>window.DONATION_LINKS = {"venmoUrl":"https://venmo.com/u/FreeAICharity","cashAppUrl":"https://cash.app/$janady07","stripePaymentLink":"https://buy.stripe.com/test_123","cashAppHandle":"@janady07","campaignRaised":1200,"campaignGoal":5000000,"venmoHandle":"thatdeveloperguyyyy"};</script>
-<!-- DONATION_LINKS_END -->
-  <script>
-    // Check if we're in an iframe (like GitHub Pages)
-    if (window !== window.top) {
-      document.documentElement.classList.add('in-iframe');
-    }
-  </script>
-  <style>
-    /* Additional styles that may be needed but aren't in the CSS file */
-    .brand {
-      display: inline-flex; 
-      align-items: center; 
-      gap: 14px; 
-      margin-bottom: 12px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text; 
-      background-clip: text; 
-      color: transparent;
-      font-weight: 800; 
-      font-size: clamp(28px, 6vw, 54px);
-      letter-spacing: 0.4px;
-      text-shadow: 0 8px 30px rgba(124,92,255,0.25);
-    }
-    
-    .btn:hover { 
-      transform: translateY(-2px); 
-      background: rgba(255,255,255,0.07); 
-      border-color: rgba(255,255,255,0.2); 
-    }
-    
-    .btn svg { 
-      width: 22px; 
-      height: 22px; 
-    }
-    
-    .sub { 
-      color: var(--muted); 
-      font-size: 13px; 
-      margin-top: 12px; 
-    }
-    
-    .admin-link { 
-      margin-top: 22px; 
-      display: inline-block; 
-      color: #b3c7ff; 
-      opacity: .85; 
-      text-decoration: none; 
-    }
-    
-    .admin-link:hover { 
-      opacity: 1; 
-      text-decoration: underline; 
-    }
-    
-    /* Hide disabled donation buttons entirely */
-    .btn-omni.disabled { 
-      display: none; 
-    }
-    
-    .section-header { 
-      margin-top: 16px; 
-      margin-bottom: 4px; 
-      font-weight: 800; 
-      letter-spacing: .2px; 
-      background: linear-gradient(90deg, var(--accent), var(--accent-2)); 
-      -webkit-background-clip: text; 
-      background-clip: text; 
-      color: transparent; 
-    }
-  </style>
-  <link rel="stylesheet" href="css/fix-overlay.css"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free AI Charity — AI for Everyone</title>
+  <meta name="description" content="We believe AI should be for everyone. Free tools, open access, and honest truth about what AI can and cannot do." />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" />
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <script>document.documentElement.classList.remove('no-js')</script>
 </head>
-<body class="github-pages">
-  <!-- Splash Screens -->
-  <div id="burtonSplash" class="splash-screen burton-splash">
-    <div class="burton-particles" id="burtonParticles"></div>
-    <div class="splash-content">
-      <div class="splash-icon">🎭</div>
-      <h1 class="splash-title">AI Tools</h1>
-      <p>Entering the whimsical world of creative AI...</p>
-    </div>
-  </div>
-  
-  <div id="nickelodeonSplash" class="splash-screen nickelodeon-splash">
-    <div class="nickelodeon-shapes" id="nickelodeonShapes"></div>
-    <div class="splash-content">
-      <div class="splash-icon">🌟</div>
-      <h1 class="splash-title">Community</h1>
-      <p>Jumping into our vibrant community space...</p>
-    </div>
-  </div>
-  
-  <div class="page-container">
-    <main class="wrap">
-    <section class="hero hero-omni reveal-in" style="border-radius:16px; overflow:hidden;">
-      <div class="brand">ThatAIGuy.org</div>
-      <div class="tagline">Help fuel research, tools, and community resources focused on accessible AI.</div>
-      <div style="margin:10px 0 20px;">
-  <a href="./research.html" class="tag-omni">Open Research</a>
-  <span class="tag-omni tab-header" id="aiToolsTab" tabindex="0" role="button" aria-controls="aiToolsContent">AI Tools</span>
-  <span class="tag-omni tab-header" id="communityTab" tabindex="0" role="button" aria-controls="communityContent">Community</span>
-      </div>
-      <div class="card">
-        <div id="tabContents">
-          <div id="aiToolsContent" class="tab-content" style="display:none;">
-            <!-- Tim Burton-inspired 3D UI will be injected here -->
-          </div>
-          <div id="communityContent" class="tab-content" style="display:none;">
-            <!-- Nickelodeon-inspired 3D UI will be injected here -->
-          </div>
+<body class="min-h-screen">
+  <canvas id="hero-canvas" class="webgl" aria-hidden="true"></canvas>
+
+  <header class="section sticky top-0 z-10 bg-black/30 backdrop-blur border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+      <a href="/" class="font-semibold tracking-wide">Free AI Charity</a>
+      <nav class="flex items-center gap-4">
+        <a href="#tools" class="hover:underline">Tools</a>
+        <a href="#truth" class="hover:underline">Truth</a>
+        <a href="#contribute" class="hover:underline">Contribute</a>
+        <div class="hidden sm:flex items-center gap-2 pl-3 js-only">
+          <button class="theme-chip" data-theme="galaxy" title="Galaxy" style="background:#0b0f18"></button>
+          <button class="theme-chip" data-theme="neural"  title="Neural"  style="background:#0a0a0a"></button>
+          <button class="theme-chip" data-theme="sunrise" title="Sunrise" style="background:#1a2235"></button>
         </div>
-        <div id="mainContent">
-          <h2 style="margin-top:0; margin-bottom:12px; font-size:20px; font-weight:700">Choose your donation method</h2>
-          <div class="cta">
-            <a id="venmoBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3z" fill="#3d95ce"/><path d="M16.5 6.5c.3 1.2-.1 3-1 5.3l-3.2 7.7H7.8L5.5 6.8l4.3-.3.7 6.2 2.3-6.2h3.7z" fill="#fff"/></svg>
-              <span>Donate via Venmo</span>
-            </a>
-            <a id="cashappBtn" class="btn-omni secondary" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="#00d632"/><path d="M10.5 8.2c0-.7.6-1.3 1.3-1.3h1.6c1.9 0 3.5 1.6 3.5 3.5 0 1.7-1.2 3.1-2.8 3.4l-3.4.7c-1.1.2-1.9 1.2-1.9 2.3 0 1.3 1 2.3 2.3 2.3h3.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <span>Donate via Cash App</span>
-            </a>
-            <a id="stripeBtn" class="btn-omni" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="#635bff"/><rect x="5" y="9" width="10" height="2" rx="1" fill="#ffffff" opacity=".9"/><rect x="5" y="13" width="14" height="2" rx="1" fill="#ffffff" opacity=".9"/></svg>
-              <span>Donate with Card (Stripe)</span>
-            </a>
-          </div>
-          <div class="donation-tiers">
-            <h3 class="section-header">Select Donation Amount</h3>
-            <div id="stripeOptions" class="stripe-options"></div>
-          </div>
-          <div class="business-tiers">
-            <h3 id="bizHeader" class="section-header" style="display:none">Business & Sponsorship</h3>
-            <div id="businessOptions" class="stripe-options" style="display:none"></div>
-          </div>
-          <div id="note" class="sub">Links load from <code>static/config.json</code>. Update your handles/URLs there.</div>
-          <div style="max-width:560px; margin:22px auto 0;">
-            <div class="progress-bar-omni" data-progress="35">
-              <div class="progress"></div>
-            </div>
-            <div id="progressLabel" style="font-size:12px; opacity:.8; margin-top:8px; text-align:center;">Campaign progress</div>
-          </div>
-          <a class="admin-link" href="/backend">Admin Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="section relative">
+      <div class="mx-auto max-w-7xl px-6 py-20 sm:py-28">
+        <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight">
+          AI for Everyone. <span class="text-sky-300">Free tools.</span> Honest truth.
+        </h1>
+        <p class="mt-4 max-w-2xl text-lg text-slate-300">
+          We’re building a place where anyone on Earth can use powerful AI tools, learn how they work, and see
+          their limits. No gatekeeping. No hype. Just access.
+        </p>
+        <div class="mt-8 flex gap-3">
+          <a href="#tools" class="btn hover:bg-white/10">Start using tools</a>
+          <a href="#contribute" class="btn hover:bg-white/10">Help build the future</a>
         </div>
       </div>
     </section>
+
+    <!-- Tools -->
+    <section id="tools" class="section relative">
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Try these free, in-browser tools</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <article class="card p-5">
+            <h3 class="font-semibold">Text Assistant</h3>
+            <p class="text-slate-300 text-sm mt-1">Write, summarize, translate. Runs via open APIs when available.</p>
+            <a class="btn mt-4 inline-block" href="#truth">Learn what it can’t do</a>
+          </article>
+          <article class="card p-5">
+            <h3 class="font-semibold">Image Sketch → Art</h3>
+            <p class="text-slate-300 text-sm mt-1">Draw a rough idea; AI renders variants (when enabled).</p>
+            <a class="btn mt-4 inline-block" href="#truth">Limits & ethics</a>
+          </article>
+          <article class="card p-5">
+            <h3 class="font-semibold">Music Ideas</h3>
+            <p class="text-slate-300 text-sm mt-1">Create motifs and rhythms for inspiration. Browser-first.</p>
+            <a class="btn mt-4 inline-block" href="#truth">Sampling & licensing</a>
+          </article>
+        </div>
+        <p class="text-xs text-slate-400 mt-4">Note: Some demos require APIs; they’ll auto-enable when connected.</p>
+      </div>
+    </section>
+
+    <!-- Truth -->
+    <section id="truth" class="section relative">
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6">The truth about AI</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="card p-5">
+            <h3 class="font-semibold">What AI does well</h3>
+            <ul class="list-disc pl-5 text-slate-300 text-sm mt-2 space-y-1">
+              <li>Pattern completion, summarization, remixing known styles</li>
+              <li>Fast drafting, code scaffolding, basic analysis</li>
+              <li>Search + synthesis for common knowledge</li>
+            </ul>
+          </div>
+          <div class="card p-5">
+            <h3 class="font-semibold">What AI does poorly</h3>
+            <ul class="list-disc pl-5 text-slate-300 text-sm mt-2 space-y-1">
+              <li>Ground truth without sources (hallucinations)</li>
+              <li>Up-to-the-minute facts without browsing</li>
+              <li>Nuanced judgment without human review</li>
+            </ul>
+          </div>
+          <div class="card p-5">
+            <h3 class="font-semibold">Safety & ethics</h3>
+            <p class="text-slate-300 text-sm mt-2">
+              Respect creators, cite sources, protect privacy, and design with consent. AI should expand human potential—never replace dignity.
+            </p>
+          </div>
+          <div class="card p-5">
+            <h3 class="font-semibold">How to verify outputs</h3>
+            <p class="text-slate-300 text-sm mt-2">
+              Check dates, compare multiple sources, and test code. When in doubt, ask for citations or rerun with web search enabled.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contribute -->
+    <section id="contribute" class="section relative">
+      <div class="mx-auto max-w-7xl px-6 py-12">
+        <h2 class="text-2xl sm:text-3xl font-bold mb-6">Contribute to Free AI</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="card p-5">
+            <h3 class="font-semibold">Developers</h3>
+            <p class="text-slate-300 text-sm mt-2">Open issues, build demos, add translations. Auto-deploy via GitHub → Netlify.</p>
+          </div>
+          <div class="card p-5">
+            <h3 class="font-semibold">Everyone</h3>
+            <p class="text-slate-300 text-sm mt-2">Share ideas, request features, report bugs, spread the mission.</p>
+          </div>
+        </div>
+        <p class="text-sm text-slate-400 mt-4">Email: team@freeaicharity.org. Mirrors on Netlify/Vercel planned for resilience.</p>
+      </div>
+    </section>
   </main>
-  </div>
 
-  <script>
-    function applyLinks(cfg) {
-      const venmo = (cfg.venmoHandle || '').trim();
-      const cash = (cfg.cashAppHandle || '').trim();
-      const venmoUrl = (cfg.venmoUrl || '').trim();
-      const cashUrl = (cfg.cashAppUrl || '').trim();
-      const stripeUrl = (cfg.stripeUrl || cfg.stripePaymentLink || '').trim();
-      const stripeLinks = Array.isArray(cfg.stripeLinks) ? cfg.stripeLinks : [];
-      const businessLinks = Array.isArray(cfg.stripeBusinessLinks) ? cfg.stripeBusinessLinks : [];
-      const venmoBtn = document.getElementById('venmoBtn');
-      const cashBtn = document.getElementById('cashappBtn');
-      const stripeBtn = document.getElementById('stripeBtn');
-      const stripeOptions = document.getElementById('stripeOptions');
-      const businessOptions = document.getElementById('businessOptions');
-      const bizHeader = document.getElementById('bizHeader');
-      const note = document.getElementById('note');
+  <footer class="section border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-6 py-8 text-sm text-slate-400">
+      <p>© <span id="y"></span> Free AI Charity. Built with love, openness, and OmniCron orchestration.</p>
+    </div>
+  </footer>
 
-      if (venmoUrl) {
-        venmoBtn.href = venmoUrl;
-      } else if (venmo) {
-        const user = venmo.replace(/^@/, '');
-        venmoBtn.href = `https://venmo.com/u/${user}`;
-      }
-
-      if (cashUrl) {
-        cashBtn.href = cashUrl;
-      } else if (cash) {
-        const norm = cash.startsWith('$') ? cash : `$${cash}`;
-        cashBtn.href = `https://cash.app/${norm}`;
-      }
-
-      // Always set the main Stripe button URL
-      if (stripeUrl) {
-        stripeBtn.href = stripeUrl;
-      } else if (stripeLinks.length > 0 && stripeLinks[0] && stripeLinks[0].url) {
-        stripeBtn.href = stripeLinks[0].url;
-      }
-      
-      // Always show the stripe options if available
-      if (stripeOptions) {
-        stripeOptions.innerHTML = '';
-        const fmt = (cents) => {
-          const dollars = (Number(cents) || 0) / 100;
-          return `$${dollars.toLocaleString(undefined,{maximumFractionDigits:0})}`;
-        };
-        
-        if (stripeLinks.length > 0) {
-          stripeLinks
-            .filter(it => it && it.url)
-            .sort((a,b) => (a.amountCents||0) - (b.amountCents||0))
-            .forEach(it => {
-              const a = document.createElement('a');
-              a.href = it.url;
-              a.target = '_blank'; a.rel = 'noopener';
-              a.textContent = it.name || fmt(it.amountCents || 0);
-              a.classList.add('btn');
-              stripeOptions.appendChild(a);
-            });
-          
-          // Show the donation tiers section
-          const tierSection = document.querySelector('.donation-tiers');
-          if (tierSection) {
-            tierSection.style.display = 'block';
-          }
-        } else {
-          // Hide the donation tiers section if no links
-          const tierSection = document.querySelector('.donation-tiers');
-          if (tierSection) {
-            tierSection.style.display = 'none';
-          }
-        }
-      }
-
-      if (businessLinks.length > 0 && businessOptions) {
-        businessOptions.innerHTML = '';
-        businessLinks.forEach(it => {
-          if (!it || !it.url) return;
-          const a = document.createElement('a');
-          a.href = it.url; a.target = '_blank'; a.rel = 'noopener';
-          a.textContent = it.name || 'Business';
-          a.classList.add('btn');
-          businessOptions.appendChild(a);
-        });
-        businessOptions.style.display = 'grid';
-        if (bizHeader) bizHeader.style.display = 'block';
-      }
-
-      if (businessLinks.length > 0 && businessOptions) {
-        businessOptions.innerHTML = '';
-        businessLinks.forEach(it => {
-          if (!it || !it.url) return;
-          const a = document.createElement('a');
-          a.href = it.url; a.target = '_blank'; a.rel = 'noopener';
-          a.textContent = it.name || 'Business';
-          businessOptions.appendChild(a);
-        });
-        businessOptions.style.display = 'grid';
-      }
-
-      // Disable only those still pointing to '#'
-      [venmoBtn, cashBtn, stripeBtn].forEach(btn => {
-        if (!btn || !btn.getAttribute('href') || btn.getAttribute('href') === '#') {
-          btn.classList.add('disabled');
-          btn.style.opacity = .6;
-          btn.style.pointerEvents = 'none';
-        }
-      });
-
-      if (venmoBtn.href !== '#' || cashBtn.href !== '#' || stripeBtn.href !== '#') {
-        note.textContent = 'Thank you for your support!';
-      }
-    }
-
-    async function loadConfig() {
-      try {
-        // Try both relative and absolute paths for GitHub Pages compatibility
-        let res;
-        try {
-          res = await fetch('/config.json', { cache: 'no-store' });
-          if (!res.ok) throw new Error('Not found at root path');
-        } catch (e) {
-          // Try relative path for GitHub Pages
-          res = await fetch('./config.json', { cache: 'no-store' });
-          if (!res.ok) throw new Error('Config not available');
-        }
-        
-        const cfg = await res.json();
-        applyLinks(cfg);
-
-        // Optional: campaign progress from config
-        const raised = Number(cfg.campaignRaised || cfg.raised || 0);
-        const goal = Number(cfg.campaignGoal || cfg.goal || 0);
-        let pct = 35;
-        let label = 'Campaign progress';
-        if (goal > 0) {
-          pct = Math.min(100, Math.max(0, Math.round((raised / goal) * 100)));
-          label = `Campaign progress — $${raised.toLocaleString()} of $${goal.toLocaleString()}`;
-        }
-        const bar = document.querySelector('.progress-bar-omni');
-        if (bar) {
-          bar.setAttribute('data-progress', String(pct));
-          const fill = bar.querySelector('.progress');
-          if (fill) fill.style.width = pct + '%';
-        }
-        const pl = document.getElementById('progressLabel');
-        if (pl) pl.textContent = label;
-      } catch (e) {
-        document.getElementById('note').textContent = 'Configure donation links in static/config.json';
-        // Keep a sensible default progress
-        const bar = document.querySelector('.progress-bar-omni .progress');
-        if (bar) bar.style.width = '35%';
-      }
-    }
-    // Apply links from embedded build-time config first (no network)
-    try { if (window.DONATION_LINKS) applyLinks(window.DONATION_LINKS); } catch {}
-    // Then fetch config.json to ensure latest
-    loadConfig();
-  </script>
-  <script src="./freeaicharity_custom.js" defer></script>
-  <script src="./splash-screens.js" defer></script>
-  <script src="./themed-tabs.js" defer></script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="/assets/js/app.js"></script>
 </body>
 </html>
