@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Timeline – Free AI Charity</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" />
+<link rel="stylesheet" href="/assets/css/base.css" />
+<style>
+.timeline {
+  position: relative;
+  margin-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(125,211,252,.3);
+}
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 2.5rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: .25rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, #7dd3fc);
+}
+</style>
+</head>
+<body class="min-h-screen">
+<header class="section sticky top-0 z-10 bg-black/30 backdrop-blur border-b border-white/10">
+  <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+    <a href="/" class="font-semibold tracking-wide">Free AI Charity</a>
+    <nav class="flex items-center gap-4">
+      <a href="/" class="hover:underline">Home</a>
+      <a href="/app-3d/" class="hover:underline">3D Rooms</a>
+    </nav>
+  </div>
+</header>
+<main class="section relative">
+  <div class="mx-auto max-w-5xl px-6 py-16">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-8">Key Moments in AI History</h1>
+    <div class="timeline">
+      <div class="timeline-item"><h3 class="font-semibold">1950 – Turing Test</h3><p class="text-slate-300 text-sm mt-1">Alan Turing proposes the Imitation Game.</p></div>
+      <div class="timeline-item"><h3 class="font-semibold">1956 – Dartmouth Workshop</h3><p class="text-slate-300 text-sm mt-1">The term “AI” is coined.</p></div>
+      <div class="timeline-item"><h3 class="font-semibold">2012 – Deep Learning Breakthrough</h3><p class="text-slate-300 text-sm mt-1">AlexNet wins ImageNet, revitalizing neural nets.</p></div>
+      <div class="timeline-item"><h3 class="font-semibold">2016 – AlphaGo vs. Lee Sedol</h3><p class="text-slate-300 text-sm mt-1">Milestone for reinforcement learning.</p></div>
+      <div class="timeline-item"><h3 class="font-semibold">2020 – GPT-3</h3><p class="text-slate-300 text-sm mt-1">Unprecedented text generation scale.</p></div>
+      <div class="timeline-item"><h3 class="font-semibold">2022 – ChatGPT</h3><p class="text-slate-300 text-sm mt-1">LLMs reach mainstream via chat interfaces.</p></div>
+    </div>
+  </div>
+</main>
+<footer class="section border-t border-white/10">
+  <div class="mx-auto max-w-7xl px-6 py-8 text-sm text-slate-400">
+    <p>© <span id="y"></span> Free AI Charity.</p>
+  </div>
+</footer>
+<script>
+document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
