@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Explore 3D Rooms – Free AI Charity</title>
+  <meta name="description" content="Explore interactive 3D rooms highlighting the AI tools available on Free AI Charity.">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="/assets/css/base.css"/>
+  <style>
+    html,body,#renderCanvas{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);}    
+    .nav{position:fixed;top:10px;left:10px;z-index:10;background:rgba(0,0,0,.35);padding:.5rem .75rem;border-radius:.75rem;border:1px solid rgba(255,255,255,.15);}    
+    .nav a{color:#cde3ff;text-decoration:none;margin-right:.6rem;}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/">← Home</a>
+    <a href="#room1">Room 1: Text</a>
+    <a href="#room2">Room 2: Images</a>
+    <a href="#room3">Room 3: Music</a>
+  </div>
+  <canvas id="renderCanvas"></canvas>
+  <script src="https://cdn.jsdelivr.net/npm/babylonjs@7.42.0/babylon.js"></script>
+  <script>
+  // Babylon.js scene demonstrating three simple rooms.
+  (function(){
+    const canvas = document.getElementById('renderCanvas');
+    const engine = new BABYLON.Engine(canvas, true, {preserveDrawingBuffer:true, stencil:true});
+    const scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0,0,0,0);
+    const camera = new BABYLON.ArcRotateCamera('camera', Math.PI/2, 1.1, 14, BABYLON.Vector3.Zero(), scene);
+    camera.attachControl(canvas, true);
+    new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
+    // Materials for each room
+    const mat1 = new BABYLON.StandardMaterial('mat1', scene); mat1.emissiveColor = new BABYLON.Color3(0.49,0.83,1.0);
+    const mat2 = new BABYLON.StandardMaterial('mat2', scene); mat2.emissiveColor = new BABYLON.Color3(0.66,0.54,0.98);
+    const mat3 = new BABYLON.StandardMaterial('mat3', scene); mat3.emissiveColor = new BABYLON.Color3(0.99,0.65,0.65);
+    // Create three rooms spaced apart along the X axis.
+    const r1 = BABYLON.MeshBuilder.CreateBox('room1',{width:6,height:3,depth:6},scene);
+    r1.position.x = -7; r1.material = mat1;
+    const r2 = BABYLON.MeshBuilder.CreateBox('room2',{width:6,height:3,depth:6},scene);
+    r2.position.x = 0; r2.material = mat2;
+    const r3 = BABYLON.MeshBuilder.CreateBox('room3',{width:6,height:3,depth:6},scene);
+    r3.position.x = 7; r3.material = mat3;
+    // Add simple text to the first room using a dynamic texture.
+    const textPlane = BABYLON.MeshBuilder.CreatePlane('text',{size:2},scene);
+    textPlane.position = new BABYLON.Vector3(-7,1.5,0);
+    const dt = new BABYLON.DynamicTexture('dt',{width:512,height:256},scene,false);
+    dt.hasAlpha = true;
+    dt.drawText('TEXT AI', null, 160, 'bold 120px Arial', 'white', 'transparent', true);
+    const dtMat = new BABYLON.StandardMaterial('dtMat',scene); dtMat.emissiveTexture = dt; textPlane.material = dtMat;
+    // Highlight selected room when nav hash changes.
+    function highlight(mesh) {
+      const hl = new BABYLON.HighlightLayer('hl', scene);
+      hl.addMesh(mesh, BABYLON.Color3.White());
+      setTimeout(()=> hl.dispose(), 800);
+    }
+    window.addEventListener('hashchange', function(){
+      const h = location.hash.replace('#','');
+      if(h === 'room1'){ camera.setTarget(r1.position); highlight(r1); }
+      if(h === 'room2'){ camera.setTarget(r2.position); highlight(r2); }
+      if(h === 'room3'){ camera.setTarget(r3.position); highlight(r3); }
+    });
+    engine.runRenderLoop(function(){
+      scene.render();
+    });
+    window.addEventListener('resize', function(){
+      engine.resize();
+    });
+  })();
+  </script>
+</body>
+</html>
