@@ -1,0 +1,175 @@
+/* Performance optimizations and loading screen for enhanced effects */
+
+/* Preload optimization */
+.preload-effects * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Loading screen with spectacular entrance */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #0a0a0a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-animation {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.loading-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin: -50px 0 0 -50px;
+  border: 3px solid transparent;
+  border-top: 3px solid #00e1ff;
+  border-right: 3px solid #ff3d7f;
+  border-radius: 50%;
+  animation: loading-spin 1s linear infinite;
+}
+
+.loading-ring:nth-child(2) {
+  width: 140px;
+  height: 140px;
+  margin: -70px 0 0 -70px;
+  border-top-color: #ffff00;
+  border-right-color: #00ff00;
+  animation-duration: 1.5s;
+  animation-direction: reverse;
+}
+
+.loading-ring:nth-child(3) {
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  border-top-color: #ff9a27;
+  border-right-color: #6a3df5;
+  animation-duration: 2s;
+}
+
+@keyframes loading-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  animation: loading-pulse 2s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Performance settings for different device capabilities */
+@media (max-width: 768px) {
+  .floating-orb:nth-child(n+6) { display: none; }
+  .particle:nth-child(n+21) { display: none; }
+  .data-stream:nth-child(n+5) { display: none; }
+  .lightning-bolt { animation-duration: 6s; }
+}
+
+@media (max-width: 480px) {
+  .dna-helix { display: none; }
+  .fractal-mandala { display: none; }
+  .neural-network { opacity: 0.5; }
+  .quantum-field { display: none; }
+}
+
+/* High performance mode */
+.performance-mode .floating-orb:nth-child(n+4) { display: none; }
+.performance-mode .particle:nth-child(n+16) { display: none; }
+.performance-mode .lightning-container { display: none; }
+.performance-mode .dna-helix { animation-duration: 40s; }
+.performance-mode .data-stream:nth-child(n+4) { display: none; }
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .floating-orb,
+  .particle,
+  .lightning-bolt,
+  .dna-helix,
+  .quantum-field,
+  .fractal-mandala,
+  .data-stream,
+  .matrix-rain,
+  .neural-network {
+    animation: none !important;
+    opacity: 0.3;
+  }
+  
+  .glitch-omni {
+    animation: none !important;
+  }
+  
+  .hero-omni::before,
+  .hero-omni::after {
+    animation: none !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+.floating-orb,
+.particle,
+.lightning-bolt,
+.dna-helix,
+.quantum-field,
+.fractal-mandala,
+.data-stream,
+.glitch-omni,
+.hero-omni::before,
+.hero-omni::after {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize for different color gamuts */
+@media (color-gamut: p3) {
+  :root {
+    --primary-gradient: linear-gradient(130deg, color(display-p3 0 0.667 1), color(display-p3 0.357 0 1));
+    --secondary-gradient: linear-gradient(130deg, color(display-p3 1 0 0.435), color(display-p3 1 0.639 0));
+  }
+}
+
+/* Container queries for better responsive effects */
+@container (max-width: 600px) {
+  .enhanced-container .floating-orb { 
+    width: 40px; 
+    height: 40px; 
+  }
+}
+
+/* Critical CSS inlining optimization */
+.critical-effects {
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+}
