@@ -790,6 +790,332 @@
   to { box-shadow: 0 0 20px #00e1ff, 0 0 30px #ff3d7f; }
 }
 
+/* Ultra-advanced lightning effects */
+.lightning-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.lightning-bolt {
+  position: absolute;
+  width: 2px;
+  height: 100vh;
+  background: linear-gradient(to bottom, 
+    transparent 0%, 
+    #00e1ff 20%, 
+    #ffffff 50%, 
+    #ff3d7f 80%, 
+    transparent 100%);
+  opacity: 0;
+  animation: lightning-strike 4s ease-in-out infinite;
+  filter: blur(1px);
+  box-shadow: 0 0 10px #00e1ff, 0 0 20px #ffffff, 0 0 30px #ff3d7f;
+}
+
+.lightning-bolt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 4px;
+  height: 100%;
+  background: inherit;
+  filter: blur(2px);
+  opacity: 0.7;
+}
+
+.lightning-bolt::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 6px;
+  height: 100%;
+  background: inherit;
+  filter: blur(4px);
+  opacity: 0.4;
+}
+
+@keyframes lightning-strike {
+  0%, 90%, 100% { 
+    opacity: 0; 
+    transform: translateX(0) scaleY(1); 
+  }
+  91% { 
+    opacity: 1; 
+    transform: translateX(2px) scaleY(1.1); 
+  }
+  92% { 
+    opacity: 0.3; 
+    transform: translateX(-1px) scaleY(0.9); 
+  }
+  93% { 
+    opacity: 1; 
+    transform: translateX(1px) scaleY(1.2); 
+  }
+  94% { 
+    opacity: 0; 
+    transform: translateX(0) scaleY(1); 
+  }
+}
+
+/* DNA helix floating animation */
+.dna-helix {
+  position: fixed;
+  width: 100px;
+  height: 400px;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+  animation: helix-float 20s ease-in-out infinite;
+}
+
+.dna-strand {
+  position: absolute;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #00e1ff, #ff3d7f, #00e1ff);
+  border-radius: 2px;
+  animation: helix-twist 8s linear infinite;
+}
+
+.dna-strand:nth-child(1) {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.dna-strand:nth-child(2) {
+  right: 20%;
+  animation-delay: 4s;
+}
+
+.dna-rung {
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  left: 20%;
+  border-radius: 1px;
+  animation: rung-pulse 2s ease-in-out infinite;
+}
+
+@keyframes helix-float {
+  0%, 100% { transform: translateY(-50%) translateX(0); }
+  25% { transform: translateY(-60%) translateX(20px); }
+  50% { transform: translateY(-40%) translateX(0); }
+  75% { transform: translateY(-55%) translateX(-15px); }
+}
+
+@keyframes helix-twist {
+  0% { transform: rotateY(0deg) rotateZ(0deg); }
+  100% { transform: rotateY(360deg) rotateZ(180deg); }
+}
+
+@keyframes rung-pulse {
+  0%, 100% { opacity: 0.6; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+/* Quantum field effect */
+.quantum-field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(0, 225, 255, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 80% 70%, rgba(255, 61, 127, 0.1) 0%, transparent 30%),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 0, 0.05) 0%, transparent 25%),
+    radial-gradient(circle at 60% 20%, rgba(0, 255, 0, 0.05) 0%, transparent 25%);
+  animation: quantum-fluctuation 12s ease-in-out infinite;
+}
+
+@keyframes quantum-fluctuation {
+  0%, 100% { 
+    transform: scale(1) rotate(0deg);
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  25% { 
+    transform: scale(1.1) rotate(90deg);
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+  50% { 
+    transform: scale(0.9) rotate(180deg);
+    filter: hue-rotate(180deg) brightness(0.8);
+  }
+  75% { 
+    transform: scale(1.05) rotate(270deg);
+    filter: hue-rotate(270deg) brightness(1.1);
+  }
+}
+
+/* Fractal mandala background */
+.fractal-mandala {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: -3;
+  opacity: 0.1;
+  background: 
+    conic-gradient(from 0deg, 
+      #00e1ff 0%, 
+      #ff3d7f 120deg, 
+      #ffff00 240deg, 
+      #00e1ff 360deg);
+  border-radius: 50%;
+  animation: mandala-spin 30s linear infinite;
+}
+
+.fractal-mandala::before {
+  content: '';
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: inherit;
+  border-radius: 50%;
+  animation: mandala-spin 20s linear infinite reverse;
+}
+
+.fractal-mandala::after {
+  content: '';
+  position: absolute;
+  top: 37.5%;
+  left: 37.5%;
+  width: 25%;
+  height: 25%;
+  background: inherit;
+  border-radius: 50%;
+  animation: mandala-spin 15s linear infinite;
+}
+
+@keyframes mandala-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Holographic data streams */
+.data-stream {
+  position: fixed;
+  width: 2px;
+  height: 100vh;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(0, 225, 255, 0.8) 20%,
+    transparent 40%,
+    rgba(255, 61, 127, 0.8) 60%,
+    transparent 80%,
+    rgba(255, 255, 0, 0.8) 90%,
+    transparent 100%);
+  opacity: 0.7;
+  animation: data-flow 6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes data-flow {
+  0% { 
+    transform: translateY(-100vh); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 0.7; 
+  }
+  90% { 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateY(100vh); 
+    opacity: 0; 
+  }
+}
+
+/* Energy pulse rings */
+.energy-ring {
+  position: absolute;
+  border: 2px solid rgba(0, 225, 255, 0.6);
+  border-radius: 50%;
+  animation: energy-pulse 4s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes energy-pulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+    border-width: 4px;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* Neural network connections */
+.neural-network {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.neural-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, #00e1ff, transparent);
+  border-radius: 50%;
+  animation: neural-pulse 3s ease-in-out infinite;
+}
+
+.neural-connection {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 225, 255, 0.4) 50%, 
+    transparent 100%);
+  transform-origin: left center;
+  animation: connection-flow 4s ease-in-out infinite;
+}
+
+@keyframes neural-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 5px #00e1ff; 
+  }
+  50% { 
+    transform: scale(1.5); 
+    box-shadow: 0 0 15px #00e1ff, 0 0 25px #ff3d7f; 
+  }
+}
+
+@keyframes connection-flow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
 /* Shake animation on hover for glitch */
 .glitch-omni:hover {
   animation: glitch-shake 0.35s steps(2, end) infinite;

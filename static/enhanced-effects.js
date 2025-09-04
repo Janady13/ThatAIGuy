@@ -24,6 +24,12 @@
     createCyberGrid();
     createParticleSystem();
     createFloatingOrbs();
+    createLightningEffect();
+    createDNAHelix();
+    createQuantumField();
+    createFractalMandala();
+    createDataStreams();
+    createNeuralNetwork();
     enhanceButtons();
     initializeHolographicText();
     startPerformanceMonitoring();
@@ -298,9 +304,155 @@
     return element;
   }
 
+  // Create lightning effect
+  function createLightningEffect() {
+    const lightningContainer = document.createElement('div');
+    lightningContainer.className = 'lightning-container';
+    
+    // Create 3 lightning bolts at different positions
+    for (let i = 0; i < 3; i++) {
+      const bolt = document.createElement('div');
+      bolt.className = 'lightning-bolt';
+      bolt.style.left = (20 + i * 30) + '%';
+      bolt.style.animationDelay = (i * 1.5) + 's';
+      lightningContainer.appendChild(bolt);
+    }
+    
+    document.body.appendChild(lightningContainer);
+  }
+
+  // Create DNA helix effect
+  function createDNAHelix() {
+    const helix = document.createElement('div');
+    helix.className = 'dna-helix';
+    
+    // Create two strands
+    for (let i = 0; i < 2; i++) {
+      const strand = document.createElement('div');
+      strand.className = 'dna-strand';
+      helix.appendChild(strand);
+    }
+    
+    // Create rungs connecting the strands
+    for (let i = 0; i < 20; i++) {
+      const rung = document.createElement('div');
+      rung.className = 'dna-rung';
+      rung.style.top = (i * 5) + '%';
+      rung.style.animationDelay = (i * 0.1) + 's';
+      helix.appendChild(rung);
+    }
+    
+    document.body.appendChild(helix);
+  }
+
+  // Create quantum field effect
+  function createQuantumField() {
+    const field = document.createElement('div');
+    field.className = 'quantum-field';
+    document.body.appendChild(field);
+  }
+
+  // Create fractal mandala
+  function createFractalMandala() {
+    const mandala = document.createElement('div');
+    mandala.className = 'fractal-mandala';
+    document.body.appendChild(mandala);
+  }
+
+  // Create data streams
+  function createDataStreams() {
+    for (let i = 0; i < 8; i++) {
+      const stream = document.createElement('div');
+      stream.className = 'data-stream';
+      stream.style.left = (10 + i * 10) + '%';
+      stream.style.animationDelay = (i * 0.8) + 's';
+      stream.style.animationDuration = (4 + Math.random() * 4) + 's';
+      document.body.appendChild(stream);
+    }
+  }
+
+  // Create neural network visualization
+  function createNeuralNetwork() {
+    const network = document.createElement('div');
+    network.className = 'neural-network';
+    
+    // Create nodes
+    const nodes = [];
+    for (let i = 0; i < 15; i++) {
+      const node = document.createElement('div');
+      node.className = 'neural-node';
+      node.style.left = Math.random() * 100 + '%';
+      node.style.top = Math.random() * 100 + '%';
+      node.style.animationDelay = Math.random() * 3 + 's';
+      network.appendChild(node);
+      nodes.push({
+        element: node,
+        x: parseFloat(node.style.left),
+        y: parseFloat(node.style.top)
+      });
+    }
+    
+    // Create connections between nearby nodes
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const distance = Math.sqrt(
+          Math.pow(nodes[i].x - nodes[j].x, 2) + 
+          Math.pow(nodes[i].y - nodes[j].y, 2)
+        );
+        
+        if (distance < 30) { // Only connect nearby nodes
+          const connection = document.createElement('div');
+          connection.className = 'neural-connection';
+          
+          const angle = Math.atan2(
+            nodes[j].y - nodes[i].y, 
+            nodes[j].x - nodes[i].x
+          ) * 180 / Math.PI;
+          
+          connection.style.left = nodes[i].x + '%';
+          connection.style.top = nodes[i].y + '%';
+          connection.style.width = distance + 'vw';
+          connection.style.transform = `rotate(${angle}deg)`;
+          connection.style.animationDelay = Math.random() * 4 + 's';
+          
+          network.appendChild(connection);
+        }
+      }
+    }
+    
+    document.body.appendChild(network);
+  }
+
+  // Add energy pulse rings on button clicks
+  function createEnergyRing(x, y) {
+    const ring = document.createElement('div');
+    ring.className = 'energy-ring';
+    ring.style.left = x + 'px';
+    ring.style.top = y + 'px';
+    ring.style.width = '20px';
+    ring.style.height = '20px';
+    ring.style.marginLeft = '-10px';
+    ring.style.marginTop = '-10px';
+    
+    document.body.appendChild(ring);
+    
+    setTimeout(() => ring.remove(), 4000);
+  }
+
+  // Enhanced button clicks with energy rings
+  document.addEventListener('click', (e) => {
+    if (e.target.matches('.btn, .btn-omni, button, a')) {
+      createEnergyRing(e.clientX, e.clientY);
+    }
+  }, { passive: true });
+
   // Cleanup function for when effects need to be removed
   window.removeEnhancedEffects = function() {
-    const effectElements = document.querySelectorAll('.matrix-rain, .cyber-grid, .particle-system, .floating-orb');
+    const effectElements = document.querySelectorAll(`
+      .matrix-rain, .cyber-grid, .particle-system, .floating-orb,
+      .lightning-container, .dna-helix, .quantum-field, .fractal-mandala,
+      .data-stream, .neural-network, .energy-ring
+    `);
     effectElements.forEach(el => el.remove());
     
     const trailElements = document.querySelectorAll('[id^="trail-"]');
