@@ -1,0 +1,18 @@
+{
+  "name": "thataiguy-donation-platform",
+  "version": "1.0.0",
+  "description": "AI for Everyone donation platform",
+  "main": "netlify-build.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "node netlify-build.mjs",
+    "dev": "node netlify-build.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "private": true
+}
