@@ -7,3 +7,4 @@ canvas.webgl{position:absolute;inset:0;display:block;z-index:0}
 .card{backdrop-filter:saturate(140%) blur(8px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px}
 .btn{border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:.7rem 1rem}
 .theme-chip{width:14px;height:14px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.45)}
+header.section{position:sticky;top:0}
