@@ -1,0 +1,10 @@
+:root { --bg:#0b0f18; --fg:#e6f0ff; --muted:#86a3c3; --brand:#7dd3fc; --accent:#a78bfa }
+html{color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:ui-sans-serif,system-ui,-apple-system,"SF Pro",Inter,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji"}
+.no-js .js-only{display:none!important}
+canvas.webgl{position:absolute;inset:0;display:block;z-index:0}
+.section{position:relative;z-index:1}
+.card{backdrop-filter:saturate(140%) blur(8px);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px}
+.btn{border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:.7rem 1rem}
+.theme-chip{width:14px;height:14px;border-radius:50%;display:inline-block;border:1px solid rgba(255,255,255,.45)}
+header.section{position:sticky;top:0}
