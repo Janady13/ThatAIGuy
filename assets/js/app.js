@@ -1,7 +1,7 @@
 (() => {
   // Theme manager
   const themes = {
-    galaxy: { bg:"#0b0f18", accent:"#7dd3fc" },
+    gallaxy: { bg:'#141414', accent:'#ffc107' },
     neural:  { bg:"#0a0a0a", accent:"#a78bfa" },
     sunrise:{ bg:"#1a2235", accent:"#fca5a5" }
   };
