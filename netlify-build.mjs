@@ -51,31 +51,14 @@ async function main() {
   setNum('campaignRaised', 'CAMPAIGN_RAISED');
   setNum('campaignGoal', 'CAMPAIGN_GOAL');
 
+  // Write config.json for client-side access instead of injecting inline scripts
   const json = JSON.stringify(out, null, 2) + '\n';
   await fs.writeFile(cfgPath, json, 'utf8');
   console.log(`netlify-build: wrote ${cfgPath}`);
   console.log(json);
 
-  // Inject build-time donation links into index.html between markers
-  try {
-    let html = await fs.readFile(indexPath, 'utf8');
-    const start = '<!-- DONATION_LINKS_START -->';
-    const end = '<!-- DONATION_LINKS_END -->';
-    const startIdx = html.indexOf(start);
-    const endIdx = html.indexOf(end);
-    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      const before = html.slice(0, startIdx + start.length);
-      const after = html.slice(endIdx);
-      const script = `\n  <script>window.DONATION_LINKS = ${JSON.stringify(out)};<\/script>\n`;
-      html = before + script + after;
-      await fs.writeFile(indexPath, html, 'utf8');
-      console.log('netlify-build: injected DONATION_LINKS into index.html');
-    } else {
-      console.warn('netlify-build: donation links markers not found in index.html');
-    }
-  } catch (e) {
-    console.warn('netlify-build: failed to inject donation links into index.html', e);
-  }
+  // Note: Donation links data is available in config.json for CSP-compliant client-side loading
+  // Removed inline script injection to comply with Content Security Policy
 }
 
 main().catch((err) => {
