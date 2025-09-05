@@ -1,1 +1,2 @@
-/backend   /backend.html   200
+/backend             /backend.html          200
+/static/donate.html  /donate                301!

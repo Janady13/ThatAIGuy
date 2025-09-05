@@ -60,7 +60,7 @@ def research_page():
 
 @app.get("/donate")
 def donate_page():
-    p = STATIC_DIR / "donate.html"
+    p = STATIC_DIR / "donate_page.html"
     if p.exists():
         return FileResponse(str(p), media_type="text/html")
     raise HTTPException(status_code=404, detail="donate.html not found")
