@@ -1,0 +1,33 @@
+{
+  "name": "thataiguy-donation-platform",
+  "version": "1.0.0",
+  "description": "Modern donation platform with FastAPI backend and static frontend",
+  "main": "netlify-build.mjs",
+  "type": "module",
+  "scripts": {
+    "build": "node netlify-build.mjs",
+    "dev": "python -m uvicorn server.app:app --host 0.0.0.0 --port 8080 --reload",
+    "start": "bash run_python_server.sh",
+    "deploy": "bash netlify_deploy.sh",
+    "setup": "bash setup_python_server.sh",
+    "lint:js": "eslint static/**/*.js netlify-build.mjs",
+    "format:js": "prettier --write static/**/*.js netlify-build.mjs"
+  },
+  "dependencies": {
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  },
+  "keywords": [
+    "donation",
+    "fastapi",
+    "netlify",
+    "venmo",
+    "stripe",
+    "cashapp"
+  ],
+  "author": "ThatAIGuy",
+  "license": "MIT"
+}

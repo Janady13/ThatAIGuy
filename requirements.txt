@@ -1,0 +1,12 @@
+# FastAPI and server dependencies
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+
+# Additional dependencies for enhanced functionality
+pydantic>=2.5.0
+python-multipart>=0.0.6
+aiofiles>=23.2.1
+httpx>=0.25.0
+
+# Development and optimization
+typing-extensions>=4.8.0
