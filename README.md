@@ -1,15 +1,14 @@
 ThatAIGuy.org Donation Platform
 ================================
 
-Modern, lightweight Flask app serving a polished donation page with Venmo, Cash App, and Stripe links, plus a simple admin view.
+Modern, lightweight FastAPI app serving a polished donation page with Venmo, Cash App, and Stripe links, plus a simple admin view.
 
 Quick Start
 -----------
 - Requirements: Python 3.10+ and `venv`.
 - Setup:
-  - `cd /Volumes/Omnicron/donation_platform`
-  - `python3 -m venv venv && source venv/bin/activate`
-  - `pip install flask gunicorn`
+  - `python3 -m venv .venv && source .venv/bin/activate`
+  - `pip install fastapi uvicorn`
 - Configure donation links:
   - Preferred: manage `/Volumes/Omnicron/env/payments.env` with:
     - `STRIPE_PAYMENT_LINK=https://buy.stripe.com/your_link`
@@ -20,13 +19,14 @@ Quick Start
     - `venmoUrl` or `venmoHandle`
     - `cashAppUrl` or `cashAppHandle`
     - `stripeUrl` or `stripePaymentLink`
-- Run:
-  - `bash launch_donation_platform.sh`
-  - App serves on `http://<host>:55888/`
+- Run (dev):
+  - `bash run_python_server.sh`
+  - The script picks a free port (default starting at 8080) and prints it, e.g. `http://localhost:8080/`
+  - Or run directly: `python -m uvicorn server.app:app --host 0.0.0.0 --port 8080`
 
 Project Structure
 -----------------
-- `server.py` — Minimal Flask server serving `static/`.
+- `server/app.py` — FastAPI server serving `static/` and friendly routes.
 - `static/index.html` — Visually rich landing page.
 - `static/backend.html` — Admin dashboard with guidance.
 - `static/config.json` — Generated from env on start; can be edited manually.
@@ -77,3 +77,15 @@ Development Notes
 -----------------
 - HTML/CSS are static; safe to edit live.
 - For deeper customization, tweak `theme.css` and the inline styles in `index.html`/`backend.html`.
+
+Funding Links
+-------------
+- Update GitHub Sponsors config at `.github/FUNDING.yml`.
+- Current custom links:
+  - https://thataiguy.org
+  - https://freeaicharity.org
+  - https://venmo.com/u/FreeAICharity
+  - https://cash.app/$FreeAICharity
+- Alternates (reference only):
+  - Venmo: https://venmo.com/u/thatdeveloperguyyyy
+  - Cash App: https://cash.app/$janady07
