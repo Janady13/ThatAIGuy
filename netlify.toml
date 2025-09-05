@@ -1,9 +1,10 @@
 [build]
+  command = "npm install && npm run build"
   publish = "static"
-  command = "node netlify-build.mjs"
 
 [build.environment]
   NODE_VERSION = "18"
+  NPM_VERSION = "9"
 
 [functions]
   directory = "functions"
