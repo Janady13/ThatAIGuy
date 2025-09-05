@@ -25,6 +25,11 @@
     const commContent = document.getElementById('communityContent');
     const mainContent = document.getElementById('mainContent');
     
+    // Only proceed if the required elements exist (i.e., we're on the main page, not backend)
+    if (!aiTab || !commTab || !aiContent || !commContent || !mainContent) {
+      return;
+    }
+    
     // Define splash screens
     const burtonSplash = document.getElementById('burtonSplash');
     const nickSplash = document.getElementById('nickelodeonSplash');
