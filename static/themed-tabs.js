@@ -9,25 +9,25 @@
  * - Responsive design
  */
 
-// Initialize Three.js library
+// Check if Three.js is loaded
 function loadThreeJs() {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load Three.js'));
-    document.head.appendChild(script);
+    if (typeof THREE !== 'undefined') {
+      resolve();
+    } else {
+      reject(new Error('Three.js not found. Please include Three.js script tag in HTML before this script.'));
+    }
   });
 }
 
-// Initialize GSAP for animations
+// Check if GSAP is loaded
 function loadGSAP() {
   return new Promise((resolve, reject) => {
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js';
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error('Failed to load GSAP'));
-    document.head.appendChild(script);
+    if (typeof gsap !== 'undefined') {
+      resolve();
+    } else {
+      reject(new Error('GSAP not found. Please include GSAP script tag in HTML before this script.'));
+    }
   });
 }
 
@@ -48,28 +48,61 @@ function fallbackToBasicUI() {
   const aiContent = document.getElementById('aiToolsContent');
   const communityContent = document.getElementById('communityContent');
   
+  function createReturnButton() {
+    const button = document.createElement('button');
+    button.textContent = 'Return to Main';
+    button.addEventListener('click', () => {
+      const mainContent = document.getElementById('mainContent');
+      if (mainContent) {
+        mainContent.style.display = 'block';
+      }
+      // Hide the current tab content
+      const parentContainer = button.closest('[id*="Content"]');
+      if (parentContainer) {
+        parentContainer.style.display = 'none';
+      }
+    });
+    return button;
+  }
+  
   if (aiContent) {
-    aiContent.innerHTML = `
-      <div style="padding: 30px; text-align: center;">
-        <h2>AI Tools</h2>
-        <p>Our advanced AI tools are designed to enhance creativity and productivity.</p>
-        <button onclick="document.getElementById('mainContent').style.display='block'; this.parentElement.parentElement.style.display='none';">
-          Return to Main
-        </button>
-      </div>
-    `;
+    const container = document.createElement('div');
+    container.style.cssText = 'padding: 30px; text-align: center;';
+    
+    const title = document.createElement('h2');
+    title.textContent = 'AI Tools';
+    
+    const description = document.createElement('p');
+    description.textContent = 'Our advanced AI tools are designed to enhance creativity and productivity.';
+    
+    const button = createReturnButton();
+    
+    container.appendChild(title);
+    container.appendChild(description);
+    container.appendChild(button);
+    
+    aiContent.innerHTML = '';
+    aiContent.appendChild(container);
   }
   
   if (communityContent) {
-    communityContent.innerHTML = `
-      <div style="padding: 30px; text-align: center;">
-        <h2>Community</h2>
-        <p>Join our vibrant community of AI enthusiasts and creators.</p>
-        <button onclick="document.getElementById('mainContent').style.display='block'; this.parentElement.parentElement.style.display='none';">
-          Return to Main
-        </button>
-      </div>
-    `;
+    const container = document.createElement('div');
+    container.style.cssText = 'padding: 30px; text-align: center;';
+    
+    const title = document.createElement('h2');
+    title.textContent = 'Community';
+    
+    const description = document.createElement('p');
+    description.textContent = 'Join our vibrant community of AI enthusiasts and creators.';
+    
+    const button = createReturnButton();
+    
+    container.appendChild(title);
+    container.appendChild(description);
+    container.appendChild(button);
+    
+    communityContent.innerHTML = '';
+    communityContent.appendChild(container);
   }
 }
 
