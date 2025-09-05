@@ -19,7 +19,29 @@
 
   // Starfield hero (lightweight)
   const canvas = document.getElementById('hero-canvas');
-  if (!canvas || !window.THREE) return;
+  if (!canvas) return;
+  
+  // If Three.js is not available, provide a simple fallback
+  if (!window.THREE) {
+    console.log('Three.js not available, using CSS fallback for visuals');
+    // Add a simple CSS animation fallback
+    canvas.style.background = 'radial-gradient(ellipse at center, #1a2235 0%, #0b0f18 70%)';
+    canvas.style.animation = 'pulse 4s ease-in-out infinite alternate';
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes pulse {
+        0% { opacity: 0.8; }
+        100% { opacity: 1; }
+      }
+      #hero-canvas {
+        background: radial-gradient(ellipse at center, #1a2235 0%, #0b0f18 70%);
+        background-size: 200% 200%;
+        animation: pulse 4s ease-in-out infinite alternate;
+      }
+    `;
+    document.head.appendChild(style);
+    return;
+  }
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, 1, 0.1, 2000);
