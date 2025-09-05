@@ -1,16 +1,11 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This workflow lets you generate SLSA provenance file for your project.
+# This workflow generates SLSA provenance for the static site artifacts.
 # The generation satisfies level 3 for the provenance requirements - see https://slsa.dev/spec/v0.1/requirements
 # The project is an initiative of the OpenSSF (openssf.org) and is developed at
 # https://github.com/slsa-framework/slsa-github-generator.
 # The provenance file can be verified using https://github.com/slsa-framework/slsa-verifier.
 # For more information about SLSA and how it improves the supply-chain, visit slsa.dev.
 
-name: SLSA generic generator
+name: SLSA Static Site Provenance Generator
 on:
   workflow_dispatch:
   release:
@@ -27,21 +22,31 @@ jobs:
 
       # ========================================================
       #
-      # Step 1: Build your artifacts.
+      # Step 1: Build the static site artifacts.
       #
       # ========================================================
-      - name: Build artifacts
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Build static site
         run: |
-            # These are some amazing artifacts.
-            echo "artifact1" > artifact1
-            echo "artifact2" > artifact2
+          # Run the netlify build process to generate config.json and process HTML
+          node netlify-build.mjs
+          
+          # Ensure we have the key artifacts for provenance
+          ls -la static/
+          
+          # Verify critical files exist
+          test -f static/index.html
+          test -f static/config.json
+          test -f static/research.html
 
       # ========================================================
       #
-      # Step 2: Add a step to generate the provenance subjects
-      #         as shown below. Update the sha256 sum arguments
-      #         to include all binaries that you generate
-      #         provenance for.
+      # Step 2: Generate provenance subjects for actual artifacts
+      #         that get deployed to production
       #
       # ========================================================
       - name: Generate subject for provenance
@@ -49,10 +54,26 @@ jobs:
         run: |
           set -euo pipefail
 
-          # List the artifacts the provenance will refer to.
-          files=$(ls artifact*)
+          # List the key artifacts that should have provenance
+          # These are the core files that get deployed and should be verified
+          artifacts=(
+            "static/index.html"
+            "static/config.json"
+            "static/research.html"
+            "static/backend.html"
+            "netlify.toml"
+          )
+          
+          # Verify all artifacts exist
+          for artifact in "${artifacts[@]}"; do
+            if [[ ! -f "$artifact" ]]; then
+              echo "ERROR: Required artifact $artifact not found"
+              exit 1
+            fi
+          done
+          
           # Generate the subjects (base64 encoded).
-          echo "hashes=$(sha256sum $files | base64 -w0)" >> "${GITHUB_OUTPUT}"
+          echo "hashes=$(sha256sum "${artifacts[@]}" | base64 -w0)" >> "${GITHUB_OUTPUT}"
 
   provenance:
     needs: [build]
