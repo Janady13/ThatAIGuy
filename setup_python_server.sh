@@ -27,10 +27,20 @@ fi
 # Activate venv and install deps
 source "$PROJECT_DIR/.venv/bin/activate"
 python -m pip install --upgrade pip wheel >/dev/null
-pip install "fastapi>=0.115" "uvicorn[standard]>=0.30" >/dev/null
 
-# Write server files
-mkdir -p "$PROJECT_DIR/server"
+# Install from requirements.txt if available, otherwise fallback to basic deps
+if [[ -f "$PROJECT_DIR/requirements.txt" ]]; then
+  log "Installing dependencies from requirements.txt"
+  pip install -r "$PROJECT_DIR/requirements.txt" >/dev/null
+else
+  log "Installing basic dependencies"
+  pip install "fastapi>=0.115" "uvicorn[standard]>=0.30" >/dev/null
+fi
+
+# Only create server files if they don't exist
+if [[ ! -f "$PROJECT_DIR/server/app.py" ]]; then
+  log "Creating initial server files"
+  mkdir -p "$PROJECT_DIR/server"
 
 cat > "$PROJECT_DIR/server/app.py" <<'PY'
 import os, json
@@ -77,6 +87,9 @@ def root():
         return FileResponse(str(idx), media_type="text/html")
     return PlainTextResponse("Static index.html not found under /static. Build or copy your UI.", status_code=200)
 PY
+else
+  log "Server files already exist, skipping creation"
+fi
 
 # Simple runner
 cat > "$PROJECT_DIR/run_python_server.sh" <<'PYRUN'
