@@ -1,14 +1,30 @@
-<!-- phase 2025-09-03T09:46:03Z -->
+<!-- Optimized production version with enhanced performance -->
 <html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Free AI Charity — AI for Everyone</title>
   <meta name="description" content="We believe AI should be for everyone. Free tools, open access, and honest truth about what AI can and cannot do." />
+  <meta name="keywords" content="AI, artificial intelligence, free tools, charity, open source, machine learning" />
+  <meta name="author" content="Free AI Charity" />
+  
+  <!-- Performance optimizations -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  
+  <!-- Optimized CSS loading -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.10/dist/tailwind.min.css" />
   <link rel="stylesheet" href="/assets/css/base.css" />
   <link rel="stylesheet" href="/assets/css/enhanced.min.css" />
+  
+  <!-- Critical CSS inlined for faster rendering -->
+  <style>
+    body{background:linear-gradient(135deg,#0b0f18,#0e1a3a);color:#e6f0ff;margin:0;overflow-x:hidden}
+    canvas.webgl{position:fixed;inset:0;z-index:0;filter:blur(0.5px)}
+    .section{position:relative;z-index:1;backdrop-filter:blur(20px)}
+    .hero-section{min-height:100vh;display:flex;align-items:center}
+  </style>
+  
   <script>document.documentElement.classList.remove('no-js')</script>
 </head>
 <body class="min-h-screen">
@@ -21,11 +37,10 @@
         <a href="#tools" class="hover:underline">Tools</a>
         <a href="#truth" class="hover:underline">Truth</a>
         <a href="#contribute" class="hover:underline">Contribute</a>
-        <a href="/donate" class="hover:underline">Donate</a>
         <div class="hidden sm:flex items-center gap-2 pl-3 js-only">
-          <button class="theme-chip" data-theme="galaxy" title="Galaxy" style="background:#0b0f18"></button>
-          <button class="theme-chip" data-theme="neural"  title="Neural"  style="background:#0a0a0a"></button>
-          <button class="theme-chip" data-theme="sunrise" title="Sunrise" style="background:#1a2235"></button>
+          <button class="theme-chip" data-theme="galaxy" title="Galaxy" style="background:#0b0f18" aria-label="Switch to Galaxy theme"></button>
+          <button class="theme-chip" data-theme="neural"  title="Neural"  style="background:#0a0a0a" aria-label="Switch to Neural theme"></button>
+          <button class="theme-chip" data-theme="sunrise" title="Sunrise" style="background:#1a2235" aria-label="Switch to Sunrise theme"></button>
         </div>
       </nav>
     </div>
@@ -39,12 +54,12 @@
           AI for Everyone. <span class="text-sky-300">Free tools.</span> Honest truth.
         </h1>
         <p class="mt-4 max-w-2xl text-lg text-slate-300">
-          We’re building a place where anyone on Earth can use powerful AI tools, learn how they work, and see
+          We're building a place where anyone on Earth can use powerful AI tools, learn how they work, and see
           their limits. No gatekeeping. No hype. Just access.
         </p>
         <div class="mt-8 flex gap-3">
-          <a href="#tools" class="btn hover:bg-white/10">Start using tools</a>
-          <a href="#contribute" class="btn hover:bg-white/10">Help build the future</a>
+          <a href="#tools" class="btn hover:bg-white/10" role="button">Start using tools</a>
+          <a href="#contribute" class="btn hover:bg-white/10" role="button">Help build the future</a>
         </div>
       </div>
     </section>
@@ -57,20 +72,20 @@
           <article class="card p-5">
             <h3 class="font-semibold">Text Assistant</h3>
             <p class="text-slate-300 text-sm mt-1">Write, summarize, translate. Runs via open APIs when available.</p>
-            <a class="btn mt-4 inline-block" href="#truth">Learn what it can’t do</a>
+            <a class="btn mt-4 inline-block" href="#truth" role="button">Learn what it can't do</a>
           </article>
           <article class="card p-5">
             <h3 class="font-semibold">Image Sketch → Art</h3>
             <p class="text-slate-300 text-sm mt-1">Draw a rough idea; AI renders variants (when enabled).</p>
-            <a class="btn mt-4 inline-block" href="#truth">Limits & ethics</a>
+            <a class="btn mt-4 inline-block" href="#truth" role="button">Limits & ethics</a>
           </article>
           <article class="card p-5">
             <h3 class="font-semibold">Music Ideas</h3>
             <p class="text-slate-300 text-sm mt-1">Create motifs and rhythms for inspiration. Browser-first.</p>
-            <a class="btn mt-4 inline-block" href="#truth">Sampling & licensing</a>
+            <a class="btn mt-4 inline-block" href="#truth" role="button">Sampling & licensing</a>
           </article>
         </div>
-        <p class="text-xs text-slate-400 mt-4">Note: Some demos require APIs; they’ll auto-enable when connected.</p>
+        <p class="text-xs text-slate-400 mt-4">Note: Some demos require APIs; they'll auto-enable when connected.</p>
       </div>
     </section>
 
@@ -78,7 +93,7 @@
     <section id="truth" class="section relative">
       <div class="mx-auto max-w-7xl px-6 py-12">
         <h2 class="text-2xl sm:text-3xl font-bold mb-6">The truth about AI</h2>
-        <div class="grid sm:grid-cols-2 gap-6">
+        <div class="grid gap-6">
           <div class="card p-5">
             <h3 class="font-semibold">What AI does well</h3>
             <ul class="list-disc pl-5 text-slate-300 text-sm mt-2 space-y-1">
@@ -115,10 +130,7 @@
     <section id="contribute" class="section relative">
       <div class="mx-auto max-w-7xl px-6 py-12">
         <h2 class="text-2xl sm:text-3xl font-bold mb-6">Contribute to Free AI</h2>
-        <div class="mt-2 mb-8">
-          <a class="btn inline-block" href="/donate">Donate</a>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-6">
+        <div class="grid gap-6">
           <div class="card p-5">
             <h3 class="font-semibold">Developers</h3>
             <p class="text-slate-300 text-sm mt-2">Open issues, build demos, add translations. Auto-deploy via GitHub → Netlify.</p>
@@ -139,6 +151,7 @@
     </div>
   </footer>
 
+  <!-- Optimized script loading -->
   <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
   <script src="/assets/js/app.min.js" defer></script>
