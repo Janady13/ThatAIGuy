@@ -12,6 +12,14 @@
 </head>
 <body class="min-h-screen">
   <canvas id="hero-canvas" class="webgl" aria-hidden="true"></canvas>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Floating sidebar navigation -->
+  <div class="floating-sidebar hidden lg:flex" id="floatingSidebar">
+    <div class="floating-nav-item" data-target="#tools" title="Tools">🛠️</div>
+    <div class="floating-nav-item" data-target="#truth" title="Truth">🎯</div>
+    <div class="floating-nav-item" data-target="#contribute" title="Contribute">🚀</div>
+  </div>
 
   <header class="section sticky top-0 z-10 glass-header border-b border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
@@ -41,8 +49,8 @@
           their limits. No gatekeeping. No hype. Just access.
         </p>
         <div class="mt-8 flex gap-3">
-          <a href="#tools" class="btn hover:bg-white/10 reveal-up">Start using tools</a>
-          <a href="#contribute" class="btn hover:bg-white/10 reveal-up">Help build the future</a>
+          <a href="#tools" class="btn hover:bg-white/10 reveal-up floating-cta">Start using tools</a>
+          <a href="#contribute" class="btn hover:bg-white/10 reveal-up floating-cta secondary">Help build the future</a>
         </div>
       </div>
     </section>

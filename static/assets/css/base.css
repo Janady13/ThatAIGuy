@@ -124,3 +124,71 @@ body::before{content:'';position:fixed;top:0;left:0;width:100vw;height:100vh;bac
 
 /* Enhanced theme chip glow */
 .theme-chip.enhanced:hover{box-shadow:0 0 20px var(--accent),0 4px 16px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3)}
+
+/* Floating action elements (Phase 7) */
+.floating-cta{position:relative;transform:translateY(0);transition:all 0.4s cubic-bezier(0.4,0,0.2,1)}
+
+.floating-cta:hover{transform:translateY(-3px) scale(1.02)}
+
+.floating-cta.secondary{background:linear-gradient(135deg,rgba(167,139,250,.15),rgba(167,139,250,.05));border:1px solid rgba(167,139,250,.3)}
+
+.floating-cta.secondary:hover{box-shadow:0 8px 25px rgba(167,139,250,.3),0 0 15px rgba(167,139,250,.2)}
+
+/* Responsive floating sidebar */
+@media (min-width:1200px){
+  .floating-sidebar{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px;opacity:0.8;transition:opacity 0.3s ease}
+  
+  .floating-sidebar:hover{opacity:1}
+  
+  .floating-nav-item{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.05));backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#7dd3fc;font-size:20px;transition:all 0.3s ease;cursor:pointer}
+  
+  .floating-nav-item:hover{transform:scale(1.1);background:linear-gradient(135deg,rgba(125,211,252,.2),rgba(125,211,252,.1));box-shadow:0 4px 15px rgba(125,211,252,.3)}
+}
+
+/* Progress indicator */
+.scroll-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#7dd3fc,#a78bfa,#fbbf24);z-index:1000;transition:width 0.3s ease}
+
+/* Enhanced loading states (Phase 8) */
+.loading-skeleton{background:linear-gradient(90deg,rgba(255,255,255,.05) 0%, rgba(255,255,255,.1) 50%, rgba(255,255,255,.05) 100%);background-size:200% 100%;animation:skeleton-shimmer 1.5s infinite;border-radius:8px}
+
+@keyframes skeleton-shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* Performance optimizations (Phase 9) */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important}
+  
+  .float-gentle,.parallax{animation:none!important}
+}
+
+.reduced-motion *{animation-duration:0.3s!important;transition-duration:0.3s!important}
+
+/* GPU acceleration for smooth animations */
+.card,.btn,.floating-cta,.theme-chip{will-change:transform;transform:translateZ(0)}
+
+/* Cross-browser compatibility (Phase 10) */
+@supports (-webkit-backdrop-filter: blur(10px)){
+  .card,.glass-header{-webkit-backdrop-filter:saturate(180%) blur(20px)}
+}
+
+@supports not (-webkit-backdrop-filter: blur(10px)){
+  .card{background:rgba(255,255,255,.08)}
+  .glass-header{background:rgba(11,15,24,.9)}
+}
+
+/* Final polish - enhanced focus states */
+.btn:focus-visible,.nav-link:focus-visible,.theme-chip:focus-visible{outline:2px solid #7dd3fc;outline-offset:2px;border-radius:4px}
+
+/* Responsive typography scaling */
+@media (max-width: 640px){
+  .hero-title{font-size:2.5rem;line-height:1.1}
+  h2{font-size:1.8rem}
+  .card{padding:1rem}
+  .floating-sidebar{display:none!important}
+}
+
+/* Enhanced accessibility */
+@media (prefers-contrast: high){
+  .card{border:2px solid rgba(255,255,255,.4)}
+  .btn{border:2px solid rgba(255,255,255,.5)}
+  .text-glow,.hero-title,.gradient-text{filter:contrast(1.2)}
+}

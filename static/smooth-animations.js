@@ -51,4 +51,57 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.animationDelay = `${index * 0.5}s`;
     el.classList.add('float-gentle');
   });
+  
+  // Scroll progress indicator
+  const scrollProgress = document.getElementById('scrollProgress');
+  if (scrollProgress) {
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      scrollProgress.style.width = `${scrollPercent}%`;
+    });
+  }
+  
+  // Floating sidebar navigation
+  const floatingSidebar = document.getElementById('floatingSidebar');
+  if (floatingSidebar) {
+    const navItems = floatingSidebar.querySelectorAll('.floating-nav-item');
+    
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const target = document.querySelector(item.dataset.target);
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // Show/hide sidebar based on scroll position
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset;
+      if (scrollTop > 300) {
+        floatingSidebar.style.opacity = '0.8';
+        floatingSidebar.style.transform = 'translateY(-50%) translateX(0)';
+      } else {
+        floatingSidebar.style.opacity = '0';
+        floatingSidebar.style.transform = 'translateY(-50%) translateX(20px)';
+      }
+    });
+  }
+  
+  // Enhanced performance monitoring
+  let performanceOptimized = false;
+  const checkPerformance = () => {
+    if (performance.now() > 16.67 && !performanceOptimized) {
+      // If frame time > 16.67ms (less than 60fps), reduce animations
+      document.body.classList.add('reduced-motion');
+      performanceOptimized = true;
+    }
+  };
+  
+  requestAnimationFrame(checkPerformance);
 });
