@@ -43,6 +43,28 @@ def root():
         return FileResponse(str(idx), media_type="text/html")
     return PlainTextResponse("Static index.html not found under /static. Build or copy your UI.", status_code=200)
 
+# Friendly routes for key pages when running locally (Netlify handles these via _redirects)
+@app.get("/backend")
+def backend_page():
+    p = STATIC_DIR / "backend.html"
+    if p.exists():
+        return FileResponse(str(p), media_type="text/html")
+    raise HTTPException(status_code=404, detail="backend.html not found")
+
+@app.get("/research")
+def research_page():
+    p = STATIC_DIR / "research.html"
+    if p.exists():
+        return FileResponse(str(p), media_type="text/html")
+    raise HTTPException(status_code=404, detail="research.html not found")
+
+@app.get("/donate")
+def donate_page():
+    p = STATIC_DIR / "donate.html"
+    if p.exists():
+        return FileResponse(str(p), media_type="text/html")
+    raise HTTPException(status_code=404, detail="donate.html not found")
+
 # Serve common asset paths used by the static site
 from fastapi import Request
 
