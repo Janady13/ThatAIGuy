@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>That AI Guy — OmniCron</title>
+  <!-- Preconnect to speed up API calls -->
+  <link rel="preconnect" href="https://api.thataiguy.org" crossorigin>
+  <!-- Tailwind CSS via CDN for utility classes -->
+  <script defer src="https://cdn.tailwindcss.com"></script>
+  <!-- HTMX for partial page updates -->
+  <script defer src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <!-- HyperScript for keyboard shortcuts and small interactivity -->
+  <script defer src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+  <!-- Site‑specific styles -->
+  <link rel="stylesheet" href="/assets/style.css" />
+  <!-- Site‑specific scripts -->
+  <script defer src="/assets/app.js"></script>
+  <meta name="description" content="OmniCron — an AI agent integration system for music and beyond. Design, agents, roadmap and more." />
+</head>
+<body class="bg-neutral-950 text-neutral-100 h-screen overflow-hidden">
+  <!-- Top navigation bar -->
+  <header class="h-14 flex items-center justify-between px-4 border-b border-white/10 bg-black/40 backdrop-blur z-40">
+    <a href="/" class="font-black tracking-tight text-lg">That AI Guy</a>
+    <!-- Tab navigation (visible on medium+ screens) -->
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/home" hx-target="#workspace" hx-swap="innerHTML">Home</a>
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/design" hx-target="#workspace" hx-swap="innerHTML">Design</a>
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/agents" hx-target="#workspace" hx-swap="innerHTML">Agents</a>
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/music" hx-target="#workspace" hx-swap="innerHTML">Music</a>
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/ai" hx-target="#workspace" hx-swap="innerHTML">AI Site</a>
+      <a class="navlink" href="#" hx-get="https://api.thataiguy.org/page/roadmap" hx-target="#workspace" hx-swap="innerHTML">Roadmap</a>
+    </nav>
+    <!-- Global Donate button -->
+    <div class="flex items-center gap-2">
+      <button class="btn" hx-get="https://api.thataiguy.org/page/support" hx-target="body" hx-swap="innerHTML">💸 Donate</button>
+    </div>
+  </header>
+
+  <!-- Main layout grid: sidebar + workspace -->
+  <div class="h-[calc(100%-3.5rem)] grid grid-cols-1 md:grid-cols-[220px_1fr]">
+    <!-- Sidebar (only visible on medium+ screens) -->
+    <aside id="sidebar" class="hidden md:block border-r border-white/10 overflow-y-auto" hx-get="https://api.thataiguy.org/sidebar" hx-trigger="load" hx-swap="innerHTML">
+      <div class="p-4 text-sm opacity-70">Loading…</div>
+    </aside>
+
+    <!-- Workspace: dynamic content loaded here -->
+    <main id="workspace" class="overflow-y-auto p-4" hx-get="https://api.thataiguy.org/page/home" hx-trigger="load" hx-swap="innerHTML">
+      <p class="opacity-70">Loading page…</p>
+    </main>
+  </div>
+
+  <!-- Floating donate button (on all pages) -->
+  <button id="donate_fab" class="fixed bottom-5 right-5 px-4 py-2 rounded-2xl border border-white/20 bg-black/60 backdrop-blur hover:bg-white/10" hx-get="https://api.thataiguy.org/page/support" hx-target="body" hx-swap="innerHTML">
+    💸 Donate
+  </button>
+</body>
+</html>
